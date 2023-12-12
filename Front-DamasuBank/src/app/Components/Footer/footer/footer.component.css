@@ -1,0 +1,62 @@
+footer{
+    background-color: rgba(61, 61, 61, 1);
+}
+
+.footer{
+    padding: 5vh 10%;
+}
+
+.footer-accordion{
+    margin-top: 5vh;
+}
+
+.accordion{
+    font-family: 'Montserrat';
+    background-color: rgba(61, 61, 61, 1);
+    color: white;
+}
+
+.accordion:focus,
+.accordion:active,
+.accordion1:focus,
+.accordion1:active {
+  outline: none;
+  box-shadow: none;
+}
+
+.accordion1{
+    background-color: rgba(61, 61, 61, 1);
+    color: white;
+    border-bottom: 0.5px solid rgba(255, 255, 255, 0.427);
+}
+.logo{
+    font-family: "Montserrat";
+    font-weight: 300;
+    font-size: 14px;
+    color: white;
+    text-decoration: none;
+}
+.logo:hover{
+    color: gray;
+    text-decoration: underline;
+}
+
+.attemp{
+    color: white;
+    border-bottom: 0.5px solid rgba(255, 255, 255, 0.427);
+}
+
+.accordion-button::after {
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='white' class='bi bi-plus' viewBox='0 0 16 16'%3E%3Cpath d='M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z'/%3E%3C/svg%3E");
+    transition: all 0.5s;
+  }
+.accordion-button:not(.collapsed)::after {
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='white' class='bi bi-dash' viewBox='0 0 16 16'%3E%3Cpath d='M4 8a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7A.5.5 0 0 1 4 8z'/%3E%3C/svg%3E");
+  }
+
+/*-------------------------*/
+
+.footer2{
+    background-color: rgb(82, 82, 82);
+    padding: 2vh 10% 1vh 10%;
+}

@@ -1,0 +1,69 @@
+.navbar1{
+    background-color:  rgb(252, 252, 252);
+    color:  rgb(252, 252, 252);
+
+}
+.navbarcolor{
+    color: rgb(252, 252, 252);
+}
+.navbarcontainer{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 10px 20px 10px 20px;
+}
+.button-navbar1{
+    border:none;
+}
+.human{
+    color: black;
+}
+.human:hover{
+    color: rgb(162, 130, 31);
+}
+.humanlogo{
+    padding: 12px 24px;
+}
+.containernavbar2{
+    background-color:  rgb(252, 252, 252);
+    color:  rgb(252, 252, 252);
+    height: 11vh;
+    padding: 10px 20px 10px 20px;
+}
+.colornavbar{
+    background-color: rgb(252, 252, 252);
+    color:  rgb(252, 252, 252);
+}
+.textmiddle{
+    font-family: 'Montserrat';
+    font-size: 16px;
+    color: black;
+    font-weight: 400;
+    text-decoration: none;
+    margin: 0px 15px 0px 15px;
+}
+.textmiddle:hover{
+    color: rgb(162, 130, 31);
+    cursor: pointer;
+}
+.icons{
+    color: black;
+    margin: 0px 20px 0px 20px;
+}
+.icons:hover{
+    color: rgb(162, 130, 31);
+    cursor: pointer;
+}
+.button-navbar1{
+    background-color: rgb(252, 252, 252);
+}
+.button-navbar1:hover{
+    color: rgb(162, 130, 31);
+}
+
+
+/*-----------*/
+
+
+
+ 

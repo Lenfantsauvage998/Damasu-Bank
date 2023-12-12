@@ -1,0 +1,71 @@
+.imggroceries{
+    position: absolute;
+    width: 100%;
+    height: 60vh; /* 100% de la altura de la ventana */
+    overflow: hidden; /* Ocultar cualquier contenido que se desborde del contenedor */
+}
+
+.imggroceries::before {
+    content: "";
+    display: block;
+    width: 100%;
+    height: 100%;
+    background-image: url('../../../../assets/street.jpg');
+    background-size: cover;
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    transition: transform 0.5s ease;
+  }
+  .attemp{
+    margin: 70px 600px 55px 100px;
+    background-color: rgba(255, 255, 255, 0.9);
+    height: 42vh;
+    width: 400px;
+    position: relative;
+    z-index: 1;
+    border-radius: 6px;
+    transition: font-size 0.3s ease;
+  }
+  .Explora{
+    margin-top: 10px;
+    border-radius: 4px;
+    font-weight: 400;
+    font-size: 14px;
+    font-family: 'Montserrat';
+  }
+  .Explora:hover{
+    color: rgb(162, 130, 31);
+    border-color: rgb(162, 130, 31);
+  }
+
+  .benefits{
+    position: static;
+  }
+
+  .logos2{
+    margin-top: 60vh;
+  }
+  .info{
+  
+    background-color: rgb(244, 244, 244);
+  }
+  .notonlybank{
+    padding: 40px 40px 40px 40px ;
+  }
+  .shadow{
+    
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.8);
+  }
+  .estilo{
+    font-family: 'Montserrat';
+    font-weight: 800;
+  }
+  .estilo1{
+    font-family: 'Montserrat';
+    font-weight: 400;
+  }
+  .otroEstilo{
+    font-family: 'Montserrat' ;
+    font-weight: 150;
+  }
