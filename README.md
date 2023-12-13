@@ -10,5 +10,5 @@ Responsive Design: User-friendly interface that adapts to different screen sizes
 Technologies Used
 Frontend: Angular 17
 Backend: Node.js
-Database: [Specify your database, e.g., MongoDB, MySQL]
+Database: MongoBd, Mongoose
 Authentication: JSON Web Tokens (JWT)
