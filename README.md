@@ -12,3 +12,5 @@ Frontend: Angular 17
 Backend: Node.js
 Database: [Specify your database, e.g., MongoDB, MySQL]
 Authentication: JSON Web Tokens (JWT)
+
+

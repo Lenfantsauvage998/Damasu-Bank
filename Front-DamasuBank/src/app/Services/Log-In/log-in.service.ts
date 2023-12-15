@@ -10,7 +10,7 @@ export class LogInService {
 
   constructor(private httpClientMine: HttpClient) { }
 
-  obtenerPersonajes() : Observable<arrayUsers> {
-    return this.httpClientMine.get<arrayUsers>("http://localhost:8080/users")
+  obtenerPersonajes() : Observable<any> {
+    return this.httpClientMine.get<any>("http://localhost:8080/users")
   }
 }

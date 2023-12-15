@@ -12,17 +12,4 @@ import { LogInService } from '../../../Services/Log-In/log-in.service';
 })
 export class AhorrosComponent {
 
-  constructor(private Login:LogInService){}
-  
-  usuarios : any = {}
-
-  traerUsers(){
-    this.Login.obtenerPersonajes().subscribe({
-      next: (result)=>{
-        console.log(result)
-        result = this.usuarios
-      }
-    })
-    
-  }
 }

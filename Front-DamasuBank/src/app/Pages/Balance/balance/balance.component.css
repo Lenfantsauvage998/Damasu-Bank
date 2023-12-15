@@ -1,0 +1,78 @@
+.navbarbalance{
+    background-color: rgb(255, 237, 184);
+    padding: 0vh 5vw;
+}
+.arrow:hover{
+    color: rgb(162, 130, 31);
+    cursor: pointer;
+}
+
+.humanlogo:hover{
+    color: rgb(162, 130, 31);
+}
+.centerbalance{
+    background-color: rgb(255, 237, 184);
+}
+.textnavbar{
+    font-family: 'Montserrat';
+    font-size: 13px;
+    color: black;
+    font-weight: 400;
+    text-decoration: none;
+}
+.line{
+    margin: 5vh 10vw;
+}
+.money{
+    font-family: 'Montserrat';
+    font-weight: 300;
+}
+.bodybalance{
+    display: flex;
+    align-items: center;
+    padding: 0vh 15vw;
+    margin: 1vh 1vw;
+    background-color: rgb(244, 244, 244);
+    border-radius: 6px;
+    box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.2);
+}
+.textnavbar1{
+    font-family: 'Montserrat';
+    font-size: 13px;
+    margin-top: 2vh;
+    color: black;
+    font-weight: 400;
+    text-decoration: none;
+}
+.icons{
+    color: black;
+}
+.icons:hover{
+    color: rgb(162, 130, 31);
+}
+.movements{
+    padding: 2vh 8vw;
+    margin: 1vh 1vw;
+    background-color: rgb(244, 244, 244);
+    border-radius: 6px;
+    box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.2);
+}
+.textnavbar1{
+    font-family: 'Montserrat';
+    font-size: 18px;
+    color: black;
+    font-weight: 400;
+    text-decoration: none;
+}
+.textinfo{
+    display: flex;
+    align-items: center;
+    height: 10vh;
+    font-family: 'Montserrat';
+    font-weight: 500;
+    margin-bottom: 0px;
+}
+.things{
+    padding: 2vh 0vw;
+    border-bottom: 0.5px solid gray;
+}
