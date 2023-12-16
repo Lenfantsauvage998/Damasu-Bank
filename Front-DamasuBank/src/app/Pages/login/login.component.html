@@ -1,0 +1,40 @@
+<div class="d-flex align-items-center justify-content-center">
+    <div class="card wrapper" style="width: 50vw;">
+      <img src="../../../assets/DamasuBankxdxd.png" alt="logo">
+      <h1>{{ showRegister ? 'Registrarse' : 'Inicio Sesión' }}</h1>
+      @if (!showRegister) {
+        <div *ngIf="!showRegister">
+          <form action="#">
+            <input type="email" id="exampleFormControlInput1" placeholder="name@example.com">
+            <input type="password" placeholder="Password">
+            <div class="recover">
+              <a href="#">Olvidaste tu Contraseña?</a>
+            </div>
+          </form>
+          <button>Login</button>
+          <div class="member">
+            No estas registrado? <a class="nav-link active" (click)="toggleView()" >Registrate ahora</a>
+          </div>
+        </div>
+      }
+      @else {
+        <div>
+          <form action="#">
+            <input type="text" placeholder="Username">
+            <input type="text" placeholder="Name">
+            <input type="password" placeholder="Password">
+            <input type="password" placeholder="Re-Enter Password">
+          </form>
+          <div class="terms">
+            <input type="checkbox" id="checkbox">
+            <label for="checkbox">Aceptar <a href="#">Terminos y condiciones</a></label>
+          </div>
+          <button>Sign Up</button>
+          <div class="member">
+            Ya estás registrado <a href="#" (click)="toggleView()">Iniciar Sesión</a>
+          </div>
+        </div>
+      }
+    </div>
+</div>
+<app-footer></app-footer>
