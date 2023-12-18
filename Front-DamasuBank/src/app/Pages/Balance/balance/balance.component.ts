@@ -1,16 +1,20 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { RegisterService } from '../../../Services/Register/register.service';
-import { FormControl, FormGroup, FormsModule, ReactiveFormsModule } from '@angular/forms';
+/*import { RegisterService } from '../../../Services/Register/register.service';*/
+/*import { FormControl, FormGroup, FormsModule, ReactiveFormsModule } from '@angular/forms';*/
+import { LogInService } from '../../../Services/Log-In/log-in.service';
 import { TransCardComponent } from '../../../Components/Transactional-Card/trans-card/trans-card.component';
+import { Router } from '@angular/router';
 @Component({
   selector: 'app-balance',
   standalone: true,
-  imports: [CommonModule,FormsModule , ReactiveFormsModule,TransCardComponent],
+  imports: [CommonModule,TransCardComponent],
   templateUrl: './balance.component.html',
   styleUrl: './balance.component.css'
 })
 export class BalanceComponent {
+
+  navigation = new Router();
 
   /*---- Info se trae del back ----*/ 
 
@@ -40,10 +44,31 @@ export class BalanceComponent {
     this.showLogin = false;
   }
 
+  constructor(private Login:LogInService){}
+
+  users : any = []
+
+
+  ngOnInit() {
+        this.Login.getinfo().subscribe({
+        next: (user)=>{
+          console.log(user)
+          this.users = user
+          console.log(user)
+        }
+      })
+  }
+
+  removeToken(){
+    localStorage.removeItem("Beaver")
+  }
+
+  /*-------
+
   formularioUsers: any
 
 
-  constructor(private register:RegisterService){
+  constructor(private register:RegisterService ,private router:Router){
 
     this.formularioUsers = new FormGroup({
       name : new FormControl(),
@@ -74,10 +99,12 @@ export class BalanceComponent {
 
   newUser(name:string , age:number, id:number, phoneNumber:string, address:string, email:string, password:string) {
     this.register.registerUser(name, age , id, phoneNumber, address, email, password ).subscribe({
-      next: (result)=>{
-        console.log(result)
-        this.newuserbox = result
+      next: (token)=>{
+        console.log(token[0])
+        this.register.savetoken(token[0])
+        this.router.navigate(["/Savings"])
       }
     })
   }
+  ------------*/
 }
