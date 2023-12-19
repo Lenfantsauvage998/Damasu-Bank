@@ -1,62 +1,38 @@
-
-
-<div *ngIf="showLogin">
-<form class="d-flex justify-content-center align-items-center" style="height: 100vh;" [formGroup]="formularioUsers" (ngSubmit)="saveuser()" >
-    <div class="p-5" style="background-color: gray; border-radius: 6px;">
-    <div class="mb-3" >
-      <label for="exampleInputEmail1" class="form-label">E-mail</label>
-      <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" formControlName="email">
-      <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
-    </div>
-    <div class="mb-3">
-      <label for="exampleInputPassword1" class="form-label">Contrasena</label>
-      <input type="password" class="form-control" id="exampleInputPassword1" formControlName="password">
-    </div>
-    <div class="mb-3 form-check">
-      <input type="checkbox" class="form-check-input" id="exampleCheck1">
-      <label class="form-check-label" for="exampleCheck1">Check me out</label>
-    </div>
-    <button type="submit" class="btn btn-primary" (click)="saveuser()">Enviar</button>
-    <a class="icons" (click)="RegisterForm()"> No tienes cuenta? Registrate!</a>
-</div>
-  </form>
-</div>
-<div *ngIf="showRegister">
-
-    <form class="d-flex justify-content-center align-items-center" style="height: 100vh;" [formGroup]="formularioForRegister" (ngSubmit)="saveuserForRegister()">
-        <div class="d-flex p-5" style="background-color: gray; border-radius: 6px;">
-        <div class=" mb-3" >
-          <label for="exampleInputEmail1" class="form-label">Nombre</label>
-          <input type="name" class="form-control"  aria-describedby="emailHelp" formControlName="name">
+<div class="d-flex align-items-center justify-content-center">
+  <div class="card wrapper" style="width: 50vw;">
+    <img src="../../../../assets/DamasuBankxdxd.png" alt="logo">
+  
+      <div *ngIf="showLogin">
+        <form [formGroup]="formularioUsers" (ngSubmit)="saveuser()" >
+          <input type="email" id="exampleFormControlInput1" formControlName="email" placeholder="name@example.com">
+          <input type="password" formControlName="password" placeholder="Password">
+          <div class="recover">
+            <a href="#">Olvidaste tu Contraseña?</a>
+          </div>
+        </form>
+        <button (click)="saveuser()">Login</button>
+        <div class="member">
+          No estas registrado? <a class="nav-link active" (click)="RegisterForm()" >Registrate ahora</a>
         </div>
-        <div class="mb-3">
-          <label for="exampleInputEmail1" class="form-label">Edad</label>
-          <input type="age" class="form-control" formControlName="age">
+      </div>
+      <div *ngIf="showRegister">
+        <form [formGroup]="formularioForRegister" (ngSubmit)="saveuserForRegister()" >
+          <input type="text" placeholder="Nombre" formControlName="name">
+          <input type="number" placeholder="Edad" formControlName="age">
+          <input type="number" placeholder="Cédula" formControlName="id">
+          <input type="number" placeholder="Número de contacto" formControlName="phoneNumber">
+          <input type="text" placeholder="Dirección" formControlName="address">
+          <input type="text" placeholder="Email" formControlName="email">
+          <input type="password" placeholder="Password" formControlName="password">
+        </form>
+        <div class="terms">
+          <input type="checkbox" id="checkbox">
+          <label for="checkbox">Aceptar <a href="#">Terminos y condiciones</a></label>
         </div>
-          <div class="mb-3">
-            <label for="exampleInputPassword1" class="form-label">Cedula</label>
-            <input type="id" class="form-control" formControlName="id">
-          </div>
-          <div class="mb-3">
-            <label for="exampleInputPassword1" class="form-label">Numero de contacto</label>
-            <input type="phoneNumber" class="form-control" formControlName="phoneNumber">
-          </div>
-          <div class="mb-3">
-            <label for="exampleInputPassword1" class="form-label">Direccion</label>
-            <input type="address" class="form-control" formControlName="address">
-          </div>
-          <div class="mb-3">
-            <label for="exampleInputPassword1" class="form-label">Correo Electronico</label>
-            <input type="email" class="form-control" formControlName="email">
-          </div>
-          <div class="mb-3">
-            <label for="exampleInputPassword1" class="form-label">Contrasena</label>
-            <input type="password" class="form-control" formControlName="password">
-          </div>
-        
-        <button type="submit" class="btn btn-primary" (click)="saveuserForRegister()">Submit</button>
-        <a class="icons" (click)="loginForm()"> Tienes cuenta? Inicia Secion</a>
-    </div>
-      </form>
-
+        <button (click)="saveuserForRegister()">Sign Up</button>
+        <div class="member">
+          Ya estás registrado <a href="#" (click)="loginForm()">Iniciar Sesión</a>
+        </div>
+      </div>
+  </div>
 </div>

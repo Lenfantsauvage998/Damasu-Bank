@@ -288,11 +288,35 @@
         </div>
 
     </div>
-
+    <div class="d-flex d-none d-sm-block justify-content-baseline align-items-center attemp">
+        <div class="p-4">
+    
+    
+            <div class="container mt-6">
+                <h1>Calculadora de Interés</h1>
+    
+                <form [formGroup]="calculateRentability" (ngSubmit)="calcular()" class="mb-3">
+                    <label for="entrada">Aquí podrá calcular el rendimiento mensual de su cuenta de ahorros preferencial con una tasa del 12% E.A:</label>
+                    <input formControlName="imputMoney"  class="form-control form-control-lg" type="number" placeholder='Ingrese valor a calcular'
+                        aria-label="valorEntrada"><br>
+                        <button class="btn btn-primary">Calcular </button>
+                </form>
+    
+                
+                <div>
+                    <input class="form-control form-control-lg" type="text" placeholder='Su rendimiento mensual es:  {{resultado}}'
+                        aria-label="valorEntrada">
+    
+                </div>
+    
+            </div>
+        </div>
+    
+    
+    
+    </div>
 
 </div>
-
-<div class="imggroceries1"></div>
 
 
 
