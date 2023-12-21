@@ -12,11 +12,13 @@ import { CommonModule } from '@angular/common';
 import { Cdt } from '../../models/cdt.model';
 import { ModalCdtComponent } from '../modal-cdt/modal-cdt.component';
 import { BsModalRef, BsModalService } from 'ngx-bootstrap/modal';
+import { NavBarComponent } from '../NavBar/nav-bar/nav-bar.component';
+import { FooterComponent } from '../Footer/footer/footer.component';
 
 @Component({
   selector: 'app-form-calculate',
   standalone: true,
-  imports: [CommonModule, ReactiveFormsModule],
+  imports: [CommonModule, ReactiveFormsModule,NavBarComponent,FooterComponent],
   templateUrl: './form-calculate.component.html',
   styleUrl: './form-calculate.component.css',
 })

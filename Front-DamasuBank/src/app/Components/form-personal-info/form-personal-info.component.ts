@@ -8,11 +8,14 @@ import {
 } from '@angular/forms';
 import { CdtService } from '../../Services/cdt.services';
 import { Router, RouterModule } from '@angular/router';
+import { NavBarComponent } from '../NavBar/nav-bar/nav-bar.component';
+import { FooterComponent } from '../Footer/footer/footer.component';
+
 
 @Component({
   selector: 'app-form-personal-info',
   standalone: true,
-  imports: [CommonModule, ReactiveFormsModule, RouterModule],
+  imports: [CommonModule, ReactiveFormsModule, RouterModule,NavBarComponent,FooterComponent],
   templateUrl: './form-personal-info.component.html',
   styleUrl: './form-personal-info.component.css',
 })
