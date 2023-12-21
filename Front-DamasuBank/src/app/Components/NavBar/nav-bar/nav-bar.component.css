@@ -64,6 +64,33 @@
 
 /*-----------*/
 
+.insidebox{
+    height: max-content;
+}
+
+.textnavbar{
+    margin-top: 50px;
+    font-family: 'Montserrat';
+    font-size: 16px;
+    color: black;
+    font-weight: 400;
+    text-decoration: none;
+}
+.textnavbar:hover{
+    color: rgb(162, 130, 31);
+    cursor: pointer;
+}
+.logosmrks{
+    margin-top: 52vh;
+}
+
+.iconsMine{
+    color: rgb(162, 130, 31);
+}
+.iconsMine:hover{
+    color: gray;
+    text-decoration: underline;
+}
 
 
  

@@ -16,13 +16,79 @@
     background-attachment: fixed;
     transition: transform 0.5s ease;
   }
+  .container{
+    display: flex;
+    justify-content: end;
+    align-items: center;
+    width: 100vw;
+    height: 80vh;
+  }
   .attemp{
-    margin: 130px 600px 55px 100px;
     background-color: rgba(255, 255, 255, 0.9);
-    height: 42vh;
-    width: 50%;
+    width: 400px;
     position: relative;
     z-index: 0;
     border-radius: 6px;
     transition: font-size 0.3s ease;
   }
+  .Explora{
+    margin-top: 10px;
+    border-radius: 4px;
+    font-weight: 400;
+    font-size: 14px;
+    font-family: 'Montserrat';
+  }
+  .Explora:hover{
+    color: rgb(162, 130, 31);
+    border-color: rgb(162, 130, 31);
+  }
+  .navbarBelow{
+    display: flex;
+    justify-content: baseline;
+    padding: 2vh 10vw;
+  }
+  .fontinfo{
+    font-family: 'Montserrat';
+    font-size: 16px;
+    font-weight: 500;
+  }
+  .fontinfo1{
+    font-family: 'Montserrat';
+    font-size: 48px;
+    font-weight: 300;
+    margin-top: 5px;
+  }
+  .newone{
+    font-family: 'Montserrat';
+    font-size: 16px;
+    font-weight: 500;
+  }
+  .evenmoreinfo{
+    background-color: rgb(244, 244, 244);
+    padding: 96px 0px;
+  }
+  .textinfo{
+    font-size: 18px;
+    font-family: 'Montserrat';
+  }
+  .title{
+    padding: 96px 0px 48px 0px;
+  }
+  .imggroceries1{
+    position: absolute;
+    width: 100%;
+    height: 80vh; /* 100% de la altura de la ventana */
+    overflow: hidden; /* Ocultar cualquier contenido que se desborde del contenedor */
+}
+.imggroceries1::before {
+  content: "";
+  display: block;
+  width: 100%;
+  height: 100%;
+  background-image: url('../../../../assets/People.jpg');
+  background-size: cover;
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  transition: transform 0.5s ease;
+}

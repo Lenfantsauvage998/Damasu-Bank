@@ -37,7 +37,7 @@ const validacionLogin = async (req, res , next) => {
     
      }catch(err){
         console.error(err);
-            res.status(500).json({ error: 'A mistake in the middleware' })
+            res.status(400).json({ error: "User not found" })
      }
     
 }
@@ -46,22 +46,26 @@ const validacionLogin = async (req, res , next) => {
 
 
 const authVerification = (req, res, next) => {
-    if(!req.headers.authorization){
+    if(!req.headers['authorization']){
         return res.json({ error: "You have to submmit an autho ticket "})
     }
 
-    let token = ' '
-
-    if (req.headers.authorization.includes('Bearer')){
-        token = req.headers.authorization.split(' ')[1]
-    }else {
-        return res.json({ error: "It must be an error in the ticket"})
+    let token = ""
+    let authToken = req.headers['authorization']
+    if (authToken.includes("Beaver")) {
+        token = req.headers['authorization'].split(' ')[1];
+    } else {
+        token = req.headers['authorization']
     }
 
-    let decoded = jwt.verify(token, process.env.JWT_KEY);
-    console.log(decoded)
-
-    next()
+    try {
+        const decoded = jwt.verify(token, process.env.JWT_KEY);
+        req.body = decoded;
+        console.log(decoded)
+        next();
+    } catch (error) {
+        return res.json({ error: 'Token inválido' });
+    }
 }
 
 

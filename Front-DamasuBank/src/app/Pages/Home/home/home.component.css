@@ -18,14 +18,21 @@
     transition: transform 0.5s ease;
   }
   .attemp{
-    margin: 70px 600px 55px 100px;
     background-color: rgba(255, 255, 255, 0.9);
-    height: 42vh;
     width: 400px;
     position: relative;
     z-index: 1;
     border-radius: 6px;
     transition: font-size 0.3s ease;
+  }
+  .container{
+    width:100vw;
+    height: 60vh;
+  }
+  @media screen and (max-height: 600px) {
+    .try {
+      display: none;
+    }
   }
   .Explora{
     margin-top: 10px;
@@ -43,9 +50,6 @@
     position: static;
   }
 
-  .logos2{
-    margin-top: 60vh;
-  }
   .info{
   
     background-color: rgb(244, 244, 244);

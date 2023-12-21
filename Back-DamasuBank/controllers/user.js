@@ -8,7 +8,7 @@ const usuarioGet = async (req,res) =>{
     try{
 
         let skip = parseInt(info.page) || 1
-        const limit = parseInt(info.page_size) || 10
+        const limit = parseInt(info.page_size) || 99
 
         const resolution = (skip) => {if (skip ==  1){
             skip = 0
@@ -47,6 +47,19 @@ const usuarioGet = async (req,res) =>{
 }
 
 
+const usuarioGetLogIn = async (req,res) =>{
+
+    try{
+        const data = req.body
+        const user = await userDamasuSchema.findById(data._id)
+        res.status(200).send([user])
+    }catch(err){
+        console.error(err)
+    }
+
+}
+
+
 const usuarioPost =  async (req,res) =>{ 
 
     try{
@@ -68,10 +81,11 @@ const usuarioPost =  async (req,res) =>{
     
     let token = jwt.sign({ _id: newuser._id },process.env.JWT_KEY)
 
-    const userData= {
-        token,
-        newuser
-    }
+    const userData= [
+        [token],
+        [newuser]
+    ]
+    
 
     res.status(200).send(userData)
     } catch (err){
@@ -87,11 +101,37 @@ const usuarioPost =  async (req,res) =>{
             const data = req.body
             let token = jwt.sign({ _id: data._id }, process.env.JWT_KEY)
 
-        res.status(200).send( token + " "  + "Has ingresado exitosamente")
+            const completeData = [
+                [token],
+                [{ msj: "Has ingresado exitosamente"}]
+            ]
+
+        res.status(200).send( completeData )
 
         }catch(err){
             console.error(err);
             res.status(500).json({ error: 'Error al registrarse' })
+        }
+    }
+
+
+    const usuarioPatrimonyUpdate = async (req, res) =>{
+        try{
+            const data = req.body
+            await userDamasuSchema.updateOne({ "id": data.id }, { $set: { "patrimony": data.request }})
+            res.status(200).send({ "msj": "Transaccion exitosa"})
+        }catch(err){
+            console.error(err)
+        }
+    }
+
+    const usuarioInvestedUpdate = async (req, res) =>{
+        try{
+            const data = req.body
+            await userDamasuSchema.updateOne({ "id": data.id }, { $set: { "investedMoney": data.request }})
+            res.status(200).send({ "msj": "Transaccion exitosa"})
+        }catch(err){
+            console.error(err)
         }
     }
 
@@ -111,5 +151,5 @@ const usuarioPost =  async (req,res) =>{
 
     
 
-     export {usuarioGet,usuarioPost,usuarioDelete,usuarioPostLogIn }
+     export {usuarioGet,usuarioGetLogIn , usuarioPost,usuarioDelete,usuarioPostLogIn ,usuarioPatrimonyUpdate,usuarioInvestedUpdate }
 

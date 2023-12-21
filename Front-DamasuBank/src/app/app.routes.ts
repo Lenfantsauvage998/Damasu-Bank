@@ -4,14 +4,16 @@ import { AhorrosComponent } from './Pages/Ahorros/ahorros/ahorros.component';
 import { FormCalculateComponent } from './Components/form-calculate/form-calculate.component';
 import { FormPersonalInfoComponent } from './Components/form-personal-info/form-personal-info.component';
 import { MainComponent } from './Pages/CDT/main/main.component';
+import { BalanceComponent } from './Pages/Balance/balance/balance.component';
+import { balanceguard } from './Guards/balance.guard';
+import { LogInComponent } from './Pages/Log-in/log-in/log-in.component';
 
 export const routes: Routes = [
-  { path: 'Savings', component: AhorrosComponent },
+  { path: '**', component: HomeComponent },
   { path: '', redirectTo: 'home', pathMatch: 'full' }, //default route
   { path: 'home', component: HomeComponent },
+  { path: 'Savings', component: AhorrosComponent },
   { path: 'CDT', component: MainComponent },
-  //   { path: '**', component: HomeComponent },
-
   {
     path: 'CDT',
     children: [
@@ -19,5 +21,22 @@ export const routes: Routes = [
       { path: 'personal-info', component: FormPersonalInfoComponent },
       { path: 'calulate', component: FormCalculateComponent },
     ],
+  },
+  {
+    path: 'login',
+    component: LogInComponent,
+  },
+  {
+    path: 'Balance',
+    component: BalanceComponent,
+    canActivate: [balanceguard],
+  },
+  {
+    path: 'Savings',
+    component: AhorrosComponent,
+  },
+  {
+    path: 'Home',
+    component: HomeComponent,
   },
 ];

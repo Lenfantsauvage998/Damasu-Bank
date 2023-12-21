@@ -1,5 +1,5 @@
 import express from "express";
-import { usuarioGet,usuarioPost,usuarioDelete, usuarioPostLogIn } from "../controllers/user.js"
+import { usuarioGet,usuarioGetLogIn , usuarioPost,usuarioDelete, usuarioPostLogIn ,usuarioPatrimonyUpdate,usuarioInvestedUpdate } from "../controllers/user.js"
 import { check }  from "express-validator";
 import {validacion, validacionEdad, validacionEmail, validacionID , validacionLogin , authVerification } from "../middlewares/db.validator.js"
 const routerUsers = express.Router()
@@ -10,7 +10,7 @@ routerUsers.get("/", usuarioGet)
 
 /*-------------------------------*/
 
-routerUsers.get("/account", authVerification ,usuarioGet)
+routerUsers.get("/account", authVerification , usuarioGetLogIn)
 
 /*-------------------------------*/
 
@@ -36,6 +36,15 @@ routerUsers.post("/login",[
 ], usuarioPostLogIn)
 
 /*----------------------------*/
+
+routerUsers.put("/update", usuarioPatrimonyUpdate)
+
+/*---------------------------*/
+
+routerUsers.put("/update/investments", usuarioInvestedUpdate)
+
+/*--------------------------*/
+
 
 routerUsers.delete("/delete/:id", usuarioDelete)
 

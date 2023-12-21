@@ -1,0 +1,38 @@
+<div class="d-flex align-items-center justify-content-center">
+  <div class="card wrapper" style="width: 50vw;">
+    <img src="../../../../assets/DamasuBankxdxd.png" alt="logo">
+  
+      <div *ngIf="showLogin">
+        <form [formGroup]="formularioUsers" (ngSubmit)="saveuser()" >
+          <input type="email" id="exampleFormControlInput1" formControlName="email" placeholder="name@example.com">
+          <input type="password" formControlName="password" placeholder="Password">
+          <div class="recover">
+            <a href="#">Olvidaste tu Contraseña?</a>
+          </div>
+        </form>
+        <button (click)="saveuser()">Login</button>
+        <div class="member">
+          No estas registrado? <a class="nav-link active" (click)="RegisterForm()" >Registrate ahora</a>
+        </div>
+      </div>
+      <div *ngIf="showRegister">
+        <form [formGroup]="formularioForRegister" (ngSubmit)="saveuserForRegister()" >
+          <input type="text" placeholder="Nombre" formControlName="name">
+          <input type="number" placeholder="Edad" formControlName="age">
+          <input type="number" placeholder="Cédula" formControlName="id">
+          <input type="number" placeholder="Número de contacto" formControlName="phoneNumber">
+          <input type="text" placeholder="Dirección" formControlName="address">
+          <input type="text" placeholder="Email" formControlName="email">
+          <input type="password" placeholder="Password" formControlName="password">
+        </form>
+        <div class="terms">
+          <input type="checkbox" id="checkbox">
+          <label for="checkbox">Aceptar <a href="#">Terminos y condiciones</a></label>
+        </div>
+        <button (click)="saveuserForRegister()">Sign Up</button>
+        <div class="member">
+          Ya estás registrado <a href="#" (click)="loginForm()">Iniciar Sesión</a>
+        </div>
+      </div>
+  </div>
+</div>
