@@ -9,7 +9,6 @@ import { balanceguard } from './Guards/balance.guard';
 import { LogInComponent } from './Pages/Log-in/log-in/log-in.component';
 
 export const routes: Routes = [
-  { path: '**', component: HomeComponent },
   { path: '', redirectTo: 'home', pathMatch: 'full' }, //default route
   { path: 'home', component: HomeComponent },
   { path: 'Savings', component: AhorrosComponent },
