@@ -1,6 +1,6 @@
 import express from "express";
 import {authVerification} from "../middlewares/db.validator.js"
-import {usuarioCDTGet, usuarioCDTGetSpecific, usuarioCDTRegistro , usuarioCapitalUpdatePSE ,usuarioCDTDelete} from "../controllers/CDT.js"
+import {usuarioCDTGet, usuarioCDTGetSpecific, usuarioCDTRegistro , usuarioCapitalUpdatePSE ,usuarioCDTDelete} from "../controllers/CDTmine.js"
 
 const routerCDT = express.Router()
 
