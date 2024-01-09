@@ -4,6 +4,7 @@ import { LogInService } from '../../../Services/Log-In/log-in.service';
 import { RegisterService } from '../../../Services/Register/register.service';
 import { FormControl, FormGroup, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { Router } from '@angular/router';
+
 @Component({
   selector: 'app-log-in',
   standalone: true,
@@ -87,12 +88,19 @@ export class LogInComponent {
         console.log(token[0])
         this.register.savetoken(token[0])
         this.router.navigate(["/Balance"])
+      }  
+    })
+    this.register.registerUserDataBase(id).subscribe({
+      next : (info)=>{
+        console.log(info)
       }
     })
-  }
-
-  deleteToken(){
-    
+    this.register.registerUserRecords(id).subscribe({
+      next : (data)=>{
+        console.log(data)
+        console.log("Se creo en base de datos")
+      }
+    })
   }
 
 }

@@ -31,14 +31,6 @@ const userSchema = new mongoose.Schema(
         password: {
             type: String,
             required: [true, "La contrasena es oblugatoria"]
-        },
-        patrimony: {
-            type: Number,
-            default: 0,
-        },
-        investedMoney: {
-            type: Number,
-            default: 0
         }
     }
 

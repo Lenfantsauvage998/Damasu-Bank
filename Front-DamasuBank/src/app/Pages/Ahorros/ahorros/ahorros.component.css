@@ -25,7 +25,7 @@
   }
   .attemp{
     background-color: rgba(255, 255, 255, 0.9);
-    width: 400px;
+    width: 450px;
     position: relative;
     z-index: 0;
     border-radius: 6px;
@@ -85,10 +85,52 @@
   display: block;
   width: 100%;
   height: 100%;
-  background-image: url('../../../../assets/People.jpg');
+  background-image: url('../../../../assets/father.jpg');
   background-size: cover;
   background-position: center center;
   background-repeat: no-repeat;
   background-attachment: fixed;
   transition: transform 0.5s ease;
+}
+.container-2{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 80vh;
+}
+.containerinside{
+  background-color: rgba(255, 255, 255, 0.9);
+  position: relative;
+  border-radius: 6px;
+  margin: 2vh 10vw;
+}
+.cdt{
+  padding: 5vh 5vw;
+}
+.inputMath{
+  border-radius: 5px;
+  height: 30px;
+  width: 200px;
+}
+.Explora{
+  margin-top: 10px;
+  border-radius: 5px;
+  font-weight: 400;
+  font-size: 14px;
+  font-family: 'Montserrat';
+}
+.Explora:hover{
+  color: rgb(162, 130, 31);
+  border-color: rgb(162, 130, 31);
+}
+.monto{
+  border-right: 0.5px solid gray;
+}
+.estilo{
+  font-family: 'Montserrat';
+  font-weight: 800;
+}
+.estilo1{
+  font-family: 'Montserrat';
+  font-weight: 400;
 }

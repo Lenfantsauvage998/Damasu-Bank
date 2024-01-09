@@ -1,5 +1,5 @@
 <nav>
-    <div class="d-flex justify-content-between align-items-center navbarbalance" style="height: 11vh;">
+    <div class="d-flex justify-content-between align-items-center navbarbalance" style="height: 78px;">
       <div class="arrow">
         <a href="" class="icons" (click)="removeToken()">
             <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" fill="currentColor" class="bi bi-box-arrow-left" viewBox="0 0 16 16">
@@ -35,8 +35,8 @@
     <div class="d-flex justify-content-center">
         <div class="d-flex align-items-start money" style="font-size: 34px;"><p class="d-flex align-items-start">$</p></div>
         <div class="d-flex align-items-start money"> <p class="d-flex align-items-start">
-            @for(i of users; track i._id){
-                <p style="font-size: 120px; ">{{i.patrimony}}</p>
+            @for(i of info; track i._id){
+                <p style="font-size: 120px; ">{{i.patrimony + exactMoney}}</p>
             }
         </p></div>
     </div>
@@ -51,8 +51,8 @@
             <div class="d-flex align-items-start money" style="font-size: 12px;"><p class="d-flex align-items-start">$</p></div>
             <div class="d-flex align-items-start money" ><p class="d-flex align-items-start">
                 <p class="d-flex align-items-start" style="font-size: 48px;" > 
-                    @for(i of users; track i._id){
-                    {{i.patrimony - i.investedMoney}}
+                    @for(i of info; track i._id){
+                    {{i.patrimony }}
                     }
                 </p> 
             </div>
@@ -76,12 +76,32 @@
                     </svg>
                 </a>
               <div class="m-2">
-                        <p style="font-family: Montserrat;">Ahorros</p>
+                        <p style="font-family: Montserrat;">Movimientos</p>
                 </div>
 
             
 
         </div>
+
+
+        <div class="d-flex flex-column justify-content-center align-items-center pt-4"> 
+
+            
+            
+            <a class="icons" (click)="TransactionsForm()">
+                <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" fill="currentColor" class="bi bi-arrow-left-right" viewBox="0 0 16 16">
+                    <path fill-rule="evenodd" d="M1 11.5a.5.5 0 0 0 .5.5h11.793l-3.147 3.146a.5.5 0 0 0 .708.708l4-4a.5.5 0 0 0 0-.708l-4-4a.5.5 0 0 0-.708.708L13.293 11H1.5a.5.5 0 0 0-.5.5m14-7a.5.5 0 0 1-.5.5H2.707l3.147 3.146a.5.5 0 1 1-.708.708l-4-4a.5.5 0 0 1 0-.708l4-4a.5.5 0 1 1 .708.708L2.707 4H14.5a.5.5 0 0 1 .5.5"/>
+                  </svg>
+            </a>
+          <div class="m-2">
+                    <p style="font-family: Montserrat;">Transacciónes</p>
+            </div>
+
+        
+
+        </div>
+
+
         <div class="d-flex flex-column justify-content-center align-items-center pt-4">
 
         
@@ -99,26 +119,42 @@
            
               
         </div>
+        <div class="d-flex flex-column justify-content-center align-items-center pt-4">
+
+        
+
+            <div routerLink="/PSE" class="icons">
+                <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" fill="currentColor" class="bi bi-bank" viewBox="0 0 16 16">
+                    <path d="m8 0 6.61 3h.89a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-.5.5H15v7a.5.5 0 0 1 .485.38l.5 2a.498.498 0 0 1-.485.62H.5a.498.498 0 0 1-.485-.62l.5-2A.5.5 0 0 1 1 13V6H.5a.5.5 0 0 1-.5-.5v-2A.5.5 0 0 1 .5 3h.89zM3.777 3h8.447L8 1zM2 6v7h1V6zm2 0v7h2.5V6zm3.5 0v7h1V6zm2 0v7H12V6zM13 6v7h1V6zm2-1V4H1v1zm-.39 9H1.39l-.25 1h13.72z"/>
+                  </svg>
+            </div>
+
+          <div class="m-2">
+            <p style="font-family: Montserrat;">PSE</p>
+         </div>
+
+       
+          
+    </div>
+    </div>
+</div>
+
+<!------------------------------>
+
+<div *ngIf="showAlert" class="d-flex justify-content-center align-items-center custom-alert">
+    <div class="d-flex">
+        <p class="d-flex justify-content-center align-items-center" style="font-family: Montserrat; font-size: 14px; font-weight: 500;">¡Transacción realizada con éxito!</p>
+        <a class="icons ms-3" (click)="closeAlert()">
+            <svg xmlns="http://www.w3.org/2000/svg" width="38" height="38" fill="currentColor" class="bi bi-x" viewBox="0 0 16 16" >
+                <path d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708"/>
+            </svg>
+        </a>
     </div>
 </div>
 
 
-<!---
-<form [formGroup]="formularioUsers" (ngSubmit)="saveuser()">
-    <input type="text" formControlName="name" placeholder="name">
-    <input type="number" formControlName="age" placeholder="age">
-    <input type="number" formControlName="id" placeholder="id">
-    <input type="text" formControlName="phoneNumber" placeholder="phoneNumber">
-    <input type="text" formControlName="address" placeholder="address">
-    <input type="text" formControlName="email" placeholder="email">
-    <input type="text" formControlName="password" placeholder="password">
-    <button type="submit">Crear Usuario</button>
-</form>
+<!------------------------------>
 
-@for(i of newuserbox; track i.name){
-    {{i.name}}
-}
---->
 
 <div *ngIf="showLogin">
     
@@ -130,9 +166,15 @@
                 <p class="textinfo">Movimientos</p>
             </div>
             <div>
-                <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" fill="currentColor" class="bi bi-plus" viewBox="0 0 16 16">
-                    <path d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4"/>
-                  </svg>
+                <a class="icons" (click)="moreInfoRegarding()">
+                        <h2 class="accordion-header accordion">
+                          <button class="accordion-button collapsed accordion " type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseOne" aria-expanded="false" aria-controls="flush-collapseOne" >
+            
+                          </button>
+                        </h2>
+                            <div id="flush-collapseOne" class="accordion-collapse collapse " data-bs-parent="#accordionFlushExample">
+                        </div>
+                </a>
             </div>
 
         </div>
@@ -146,14 +188,52 @@
         </div>
 
         <div>
-            @for(i of inputs; track i.id){
-                <app-trans-card place="{{i.place}}" date="{{i.date}}" amount="{{i.amount}}"></app-trans-card>
+            @if(records == 0){
+                <div class="d-flex justify-content-center align-items-center" style="height: 100px;"><p style="margin-bottom: 0px; font-family: Montserrat; font-size: 18px;">Parece que no tienes movimientos :(</p></div>
+            }
+            @for(i of records; track i.id){
+                <app-trans-card place="{{i.name}}" date="{{i.date}}" amount="{{i.amount}}"></app-trans-card>
               }
         </div>
 
     </div>
     
   </div>
+
+
+  <div *ngIf="showTransactions">
+    <div class="movements ">
+
+        <div class="d-flex justify-content-between align-items-center " style="border-bottom: 0.5px solid gray;">
+
+            <div >
+                <p class="textinfo">Transacciones</p>
+            </div>
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="black" class="bi bi-send" viewBox="0 0 16 16">
+                    <path d="M15.854.146a.5.5 0 0 1 .11.54l-5.819 14.547a.75.75 0 0 1-1.329.124l-3.178-4.995L.643 7.184a.75.75 0 0 1 .124-1.33L15.314.037a.5.5 0 0 1 .54.11ZM6.636 10.07l2.761 4.338L14.13 2.576zm6.787-8.201L1.591 6.602l4.339 2.76 7.494-7.493Z"/>
+                  </svg>
+            </div>
+
+        </div>
+
+      <form class="mt-3" [formGroup]="transaccion" >
+
+        <div class="d-flex justify-content-between align-items-center containerinput" >
+            <div class="d-flex justify-content-baseline">
+                <input type="text" formControlName="id" placeholder="Cedula" class="inputMath" style="background-color: rgb(248, 238, 209)" required>
+                <input type="text" formControlName="amount" placeholder="Monto" class="inputMath" style="background-color: rgb(248, 238, 209)" required>
+            </div>
+            <button class="Explora p-1" (click)="saveinfo()" *ngIf="sendButton" [disabled]="!transaccion.valid">Enviar dinero </button>
+            <div class="d-flex justify-content-center align-items-center ms-3 " style="width: 104px; height: 34px; border: 2px solid black; border-radius: 4px;" *ngIf="sendlookingButton">
+                <img src="../../assets/ballsgif.gif" style="width: 104px;">
+            </div>
+        </div>    
+
+      </form>
+    </div>
+  </div>
+
   <div *ngIf="showRegister">
     
     <div class="movements">
@@ -172,30 +252,192 @@
         </div>
 
         <div class=" mt-3 ">
-
-            <div class="d-flex justify-content-between mt-2">
-                <div><p class="textnavbar">Fecha de incio</p> </div>
-                <div><p class="textnavbar">11/08/2023</p> </div>
+        
+            @if(CDTinfo == 0){
+            <div *ngIf="showPanelCDT">
+                <div >
+                    <div class="d-flex justify-content-center align-items-center" style="height: 50px;">
+                        <p style="margin-bottom: 0px; font-family: Montserrat; font-size: 18px;">Parece que no tienes un CDT con nosotros :(</p>
+                    </div>
+                    <div class="d-flex justify-content-center align-items-center" style="height: 75px;">
+                        <button class="button1" (click)="RegisterCDTForm()" >¡Adquierelo ahora!</button>
+                    </div>
+                </div>
             </div>
 
-            <div class="d-flex justify-content-between mt-2">
-                <div><p class="textnavbar">Dinero invertido</p> </div>
-                <div><p class="textnavbar">$5'600.000</p> </div>
+            <div *ngIf="showRegisterCDT">
+                <div >
+                    <form [formGroup]="formularioForRegisterCDT">
+                        <div class="d-flex justify-content-center" style="width: 100%;">
+                            <div style="width:100%">
+                                <div style="width:100% ;margin-right: 15px;"><input type="text" placeholder="Nombre" formControlName="name" class="inputMath3" style="background-color: rgb(248, 238, 209)"></div>
+                                <div style="width:100%"><input type="text" placeholder="Cédula" formControlName="id" class="inputMath3" style="background-color: rgb(248, 238, 209)"></div>
+                                <div style="width:100%"><input type="text" placeholder="Fecha de inicio" formControlName="BeginDate" class="inputMath3" style="background-color: rgb(248, 238, 209)"></div>
+                            </div>
+                            <div style="width:100%">
+                                <div style="width:100%"><input type="text" placeholder="Monto a invertir" formControlName="investedMoney" class="inputMath3" style="background-color: rgb(248, 238, 209)"></div>
+                                <div style="width:100%"><input type="text" placeholder="Periodo en meses" formControlName="PeriodMonths" class="inputMath3" style="background-color: rgb(248, 238, 209)"></div>
+                                <div style="width:100%" class="textinfo"><p>Porcentaje Actual 14.56%</p></div>
+                            </div>
+                        </div>
+                    </form>
+            
+                    <div class="d-flex justify-content-end align-items-center" style="height: 75px;">
+                        <button class="button1" (click)="preparingInfoCDT()" [disabled]="!formularioForRegisterCDT.valid" >¡Consigue tu CDT!</button>
+                    </div>
+            
+                  </div>
             </div>
-
-            <div class="d-flex justify-content-between mt-2">
-                <div><p class="textnavbar">Porcentaje </p> </div>
-                <div><p class="textnavbar">%14,56</p> </div>
-            </div>
-
-            <div class="d-flex justify-content-between mt-2">
-                <div><p class="textnavbar">Ganacia neta anual</p> </div>
-                <div><p class="textnavbar">$384.615</p> </div>
-            </div>
+            }@else{
+                @for(i of CDTinfo; track i.id){   
+                    <div class="d-flex justify-content-between mt-2">
+                        <div><p class="textnavbar">Fecha de incio</p> </div>
+                        <div><p class="textnavbar">{{i.BeginDate}}</p> </div>
+                    </div>
+        
+                    <div class="d-flex justify-content-between mt-2">
+                        <div><p class="textnavbar">Periodo</p> </div>
+                        <div><p class="textnavbar">{{i.PeriodMonths}} Meses</p> </div>
+                    </div>
+        
+                    <div class="d-flex justify-content-between mt-2">
+                        <div><p class="textnavbar">Dinero invertido</p> </div>
+                        <div><p class="textnavbar">{{i.investedMoney}} $USD</p> </div>
+                    </div>
+        
+                    <div class="d-flex justify-content-between mt-2">
+                        <div><p class="textnavbar">Porcentaje </p> </div>
+                        <div><p class="textnavbar">{{i.percentage}} % </p> </div>
+                    </div>
+        
+                    <div class="d-flex justify-content-between mt-2">
+                        <div><p class="textnavbar">Ganacia neta anual aproximada</p> </div>
+                        <div><p class="textnavbar">{{i.investedMoney * 0.1456}} $USD</p> </div>
+                    </div>}
+            }
 
         </div>
 
     </div>
 
+
   </div>
+
+
+
+<div class="movements">
+    <div class="movements1">
+
+        <div class="frame-box">
+
+            @if(chatConversation.length === 0){
+                <div class="d-flex flex-column justify-content-end align-items-center" style="height: 370px; padding: 10px;">
+                    <div >
+                        <p class="d-flex justify-content-center align-items-center" style="font-family: Montserrat; font-size: 18px; font-weight: 500;" >Prueba a pablo nuestro asesor financiero de DamasuBank!!</p>
+                    </div>
+                    <div>
+                        <p style="font-family: Montserrat; font-size: 14px;">powered by OpenAi</p>
+                    </div>
+
+                    <div class="d-block d-lg-none d-flex align-items-end" style="width: 100%; height: 120px;"> 
+
+                        <div style="width: 100%;">
+
+                            <button class="d-flex align-items-center p-3" style="border: 0.5px solid rgb(162, 130, 31); width: 100%;height: 50px ;border-radius: 6px; margin-bottom: 10px;" (click)="preparingInfoImageSuccess()"> 
+                                <div class="d-flex flex-column align-items-start">
+                                    <div style="font-family: Montserrat; font-size: 10px; font-weight: 600;">Demuestra que es estabilidad financiera</div>
+                                    <div style="font-family: Montserrat; font-size: 10px;">y como se puede alcanzar </div>
+                                </div>
+                            </button>
+                        
+                            <button class="d-flex align-items-center p-3" style="border: 0.5px solid rgb(162, 130, 31); width: 100%;height: 50px ;border-radius: 6px;" (click)="preparingInfoImagePig()">
+                                <div class="d-flex flex-column align-items-start">
+                                    <div style="font-family: Montserrat; font-size: 10px; font-weight: 600;">Explica las cualidades de nuestro CDT</div>
+                                    <div style="font-family: Montserrat; font-size: 10px;">nombrando sus atributos </div>
+                                </div>
+                            </button>
+
+                        </div>
+
+                    </div>
+
+                    <div class="d-none d-lg-block d-flex align-items-end mt-4" style="width: 100%;"> 
+
+                            <div class="d-flex justify-content-between" style="width: 100%;">
+                                <button  class="d-flex align-items-center p-3" style="border: 0.5px solid rgb(162, 130, 31); width: 100%;height: 50px ;border-radius: 6px; margin-bottom: 10px; margin-right: 10px;" (click)="preparingInfoImageRecession()">
+                                    <div class="d-flex flex-column align-items-start">
+                                        <div style="font-family: Montserrat; font-size: 10px; font-weight: 600;">Como evitar una recesión economica</div>
+                                        <div style="font-family: Montserrat; font-size: 10px;">personal y con detalles </div>
+                                    </div>
+                                </button>
+                                <button class="d-flex align-items-center p-3" style="border: 0.5px solid rgb(162, 130, 31); width: 100%;height: 50px ;border-radius: 6px; margin-bottom: 10px;" (click)="preparingInfoImageSuccess()">
+                                    <div class="d-flex flex-column align-items-start">
+                                        <div style="font-family: Montserrat; font-size: 10px; font-weight: 600;">Demuestra que es estabilidad financiera </div>
+                                        <div style="font-family: Montserrat; font-size: 10px;">y como se puede alcanzar </div>
+                                    </div>
+                                </button>
+                            </div>
+
+                            <div class="d-flex justify-content-between" style="width: 100%;">
+                                <button class="d-flex align-items-center p-3" style="border: 0.5px solid rgb(162, 130, 31); width: 100%;height: 50px ;border-radius: 6px; margin-bottom: 10px; margin-right: 10px;" (click)="preparingInfoImageInvestment()">
+                                    <div class="d-flex flex-column align-items-start">
+                                        <div style="font-family: Montserrat; font-size: 10px; font-weight: 600;">Genera un plan de inversion</div>
+                                        <div style="font-family: Montserrat; font-size: 10px;">a corto plazo y con alto riezgo </div>
+                                    </div>
+                                </button>
+                                <button class="d-flex align-items-center p-3" style="border: 0.5px solid rgb(162, 130, 31); width: 100%;height: 50px ;border-radius: 6px; margin-bottom: 10px;" (click)="preparingInfoImagePig()">
+                                    <div class="d-flex flex-column align-items-start">
+                                        <div style="font-family: Montserrat; font-size: 10px; font-weight: 600;">Explica las cualidades de nuestro CDT</div>
+                                        <div style="font-family: Montserrat; font-size: 10px;">nombrando sus atributos</div>
+                                    </div>
+                                </button>
+                            </div>
+
+
+                    </div>
+
+                </div>
+            }
+
+            <div *ngFor="let item of chatConversation">
+                <div class="card-text padding" [ngClass]="item.cssClass">
+
+                    <div class="mb-3">
+
+                        <div style="font-size: 16px; font-weight: 500;">{{item.cssClass}}</div>
+
+                        <div class="mt-1" style="font-size: 14px; font-weight: 300"> {{item.response}} <img src="{{item.image}}" alt="" style="height: 420px; border-radius: 4px;"> </div>
+
+                    </div>
+                                                                                                                              
+                </div>
+            
+            </div>
+        </div>
+
+        <div [formGroup]="chatGptRequest"  class="d-flex justify-content-baseline align-items-end" style="min-height: 50px; width: 100%;">
+
+                <div class="d-flex justify-content-between align-items-center" style="width: 100%;" >
+                    <div style="width: 100%;">
+                        <input type="text" formControlName="message" placeholder="Pregunta acerca ..." class="inputMath1" style="background-color: rgb(248, 238, 209)">
+                    </div>
+
+                    <div class="d-flex align-items-center ms-3" *ngIf="searchButton">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="34" height="34" fill="rgb(162, 130, 31)" class="bi bi-arrow-up-square-fill arrowup" viewBox="0 0 16 16" (click)="checkResponse()">
+                            <path d="M2 16a2 2 0 0 1-2-2V2a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2zm6.5-4.5V5.707l2.146 2.147a.5.5 0 0 0 .708-.708l-3-3a.5.5 0 0 0-.708 0l-3 3a.5.5 0 1 0 .708.708L7.5 5.707V11.5a.5.5 0 0 0 1 0"/>
+                          </svg>
+                    </div>
+
+                    <div class="d-flex justify-content-center align-items-center ms-3" style="width: 40px; height: 36px; background-color:rgb(255, 237, 184);border-radius: 6px;" *ngIf="lookingButton">
+                        <img src="../../assets/stripes.gif" width="25px" height="25px">
+                    </div>
+                </div>
+
+        </div>
+
+    
+    </div>      
+
+
+</div>
 

@@ -7,26 +7,27 @@ const usuarioGet = async (req,res) =>{
     let info = req.query
     try{
 
-        let skip = parseInt(info.page) || 1
-        const limit = parseInt(info.page_size) || 99
+        let skip = parseInt(info.page) 
+        const limit = parseInt(info.page_size) 
 
-        const resolution = (skip) => {if (skip ==  1){
-            skip = 0
-            return skip
-        }else{
-            return skip - 1
-        }}
+        // const resolution = (skip) => {
+        //     if (skip ==  1){
+        //     skip = 0
+        //     return skip
+        // }else{
+        //     return skip - 1
+        // }}
 
        
-        const skipsolved = resolution(skip) 
+        // const skipsolved = resolution(skip) 
 
         const usersGet = await userDamasuSchema.aggregate(
             [
+                // {
+                //     $skip : (skipsolved * limit)
+                // },
                 {
-                    $skip : (skipsolved * limit)
-                },
-                {
-                    $limit : limit
+                    $limit : (limit * skip)
                 }
             ]
         )
@@ -50,7 +51,7 @@ const usuarioGet = async (req,res) =>{
 const usuarioGetLogIn = async (req,res) =>{
 
     try{
-        const data = req.body
+        const data = req.user
         const user = await userDamasuSchema.findById(data._id)
         res.status(200).send([user])
     }catch(err){
@@ -79,7 +80,7 @@ const usuarioPost =  async (req,res) =>{
 
     await newuser.save()
     
-    let token = jwt.sign({ _id: newuser._id },process.env.JWT_KEY)
+    let token = jwt.sign({ _id: newuser._id , id : data.id },process.env.JWT_KEY)
 
     const userData= [
         [token],
@@ -99,7 +100,7 @@ const usuarioPost =  async (req,res) =>{
     const usuarioPostLogIn = async (req, res) =>  {
         try{
             const data = req.body
-            let token = jwt.sign({ _id: data._id }, process.env.JWT_KEY)
+            let token = jwt.sign({ _id: data._id , id : data.id }, process.env.JWT_KEY)
 
             const completeData = [
                 [token],

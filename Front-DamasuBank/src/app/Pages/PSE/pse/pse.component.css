@@ -1,0 +1,88 @@
+.inputMath{
+    border-radius: 5px;
+    width: 100%;
+    border: 1px solid rgb(215, 172, 42);
+    margin-right: 15px;
+  }
+
+    /*-------------------------------------------*/
+
+    .custom-alert {
+      display: block;
+      position: fixed;
+      top: 100px; /* Ajusta este valor según tus preferencias */
+      right: 0%;
+      /* transform: translate(-50%, -50%); */
+      background-color: rgb(255, 237, 184);
+      color: black;
+      padding: 15px;
+      border-radius: 4px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
+    }
+    
+    .custom-alert button {
+      background-color: rgb(162, 130, 31);
+      color: black;
+      border: none;
+      padding: 5px 10px;
+      cursor: pointer;
+    }
+   
+    /*----------------------------------------------------*/
+
+
+    .Explora{
+      height: 100%;
+      margin-left: 10px;
+      border-radius: 4px;
+      font-weight: 400;
+      font-size: 14px;
+      font-family: 'Montserrat';
+      color: rgb(162, 130, 31);
+      border-color: rgb(162, 130, 31);
+    }
+    
+    
+    .Explora:hover{
+      color: gray;
+      border-color: gray;
+    }  
+
+
+
+    /*-------------------------------------------------------*/
+
+    .button99{
+      color: rgb(52, 181, 224);
+      border-color: rgb(52, 181, 224);
+    }
+
+    .button99:hover{
+      color: rgb(162, 130, 31);
+      border-color: rgb(162, 130, 31);
+    }
+
+    .nav{
+      background-image: url('../../../../assets/sky.jpg');
+    }
+
+  .imggroceries1{
+      position: absolute;
+      width: 100%;
+      height: 175px; /* 100% de la altura de la ventana */
+      /* overflow: hidden; Ocultar cualquier contenido que se desborde del contenedor */
+  }
+  
+  .imggroceries1::before {
+    content: "";
+    display: block;
+    width: 100%;
+    height: 100%;
+    background-image: url('../../../../assets/1236625.jpg');
+    /* background-color: red; */
+    background-size: cover;
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    transition: transform 0.5s ease;
+  }

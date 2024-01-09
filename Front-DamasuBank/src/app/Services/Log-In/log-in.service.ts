@@ -30,6 +30,27 @@ export class LogInService {
     return this.httpClientMine.get<any>("http://localhost:8080/users/account", { headers })
   }
 
+  getinfoDataBase():Observable<any>{
+    let headers = this.headers;
+    const token:string = localStorage.getItem("Beaver") as string
+    headers = headers.append("Authorization", token)
+    return this.httpClientMine.get<any>("http://localhost:8080/balance/account", { headers })
+  }
+
+  getinfoRecords():Observable<any>{
+    let headers = this.headers;
+    const token:string = localStorage.getItem("Beaver") as string
+    headers = headers.append("Authorization", token)
+    return this.httpClientMine.get<any>("http://localhost:8080/records/account", { headers })
+  }
+
+  getinfoCDT():Observable<any>{
+    let headers = this.headers;
+    const token:string = localStorage.getItem("Beaver") as string
+    headers = headers.append("Authorization", token)
+    return this.httpClientMine.get<any>("http://localhost:8080/cdt/account", { headers })
+  }
+
   savetoken(token:any){
     localStorage.setItem("Beaver",token)
   }

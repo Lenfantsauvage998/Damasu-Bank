@@ -13,7 +13,7 @@ export const balanceguard = () => {
       return false;
     }
   } else {
-    console.log("I'm in the server side")
+    // console.log("I'm in the server side")
     return false
   }
 };

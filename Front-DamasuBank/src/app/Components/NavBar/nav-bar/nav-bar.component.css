@@ -16,10 +16,11 @@
     border:none;
 }
 .human{
-    color: black;
+    border: none;
 }
 .human:hover{
     color: rgb(162, 130, 31);
+    border: none;
 }
 .humanlogo{
     padding: 12px 24px;
