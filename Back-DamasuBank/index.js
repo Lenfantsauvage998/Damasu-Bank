@@ -20,6 +20,7 @@ app.use('/balance', routerBalance)
 app.use('/records', routerHistory)
 app.use('/api', routerApi)
 app.use('/cdt', routerCDT)
+app.use('/cdtx', routerCdt )
 
 
 const PORT = process.env.PORT ;
