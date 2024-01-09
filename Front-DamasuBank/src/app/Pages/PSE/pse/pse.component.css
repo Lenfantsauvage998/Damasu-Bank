@@ -13,7 +13,7 @@
       top: 100px; /* Ajusta este valor según tus preferencias */
       right: 0%;
       /* transform: translate(-50%, -50%); */
-      background-color: rgb(255, 237, 184);
+      background-color: rgb(52, 181, 224);
       color: black;
       padding: 15px;
       border-radius: 4px;
@@ -21,16 +21,39 @@
     }
     
     .custom-alert button {
-      background-color: rgb(162, 130, 31);
+      background-color: rgb(52, 181, 224);
       color: black;
       border: none;
       padding: 5px 10px;
       cursor: pointer;
     }
    
+      /*-------------------------------------------*/
+
+    .custom-alert1 {
+      display: block;
+      position: fixed;
+      top: 100px; /* Ajusta este valor según tus preferencias */
+      right: 0%;
+      /* transform: translate(-50%, -50%); */
+      background-color: rgb(52, 181, 224);;
+      color: black;
+      padding: 15px;
+      border-radius: 4px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
+    }
+  
+  .custom-alert button {
+    background-color: rgb(52, 181, 224);
+    color: black;
+    border: none;
+    padding: 5px 10px;
+    cursor: pointer;
+  }
+ 
+  /*----------------------------------------------------*/
+
     /*----------------------------------------------------*/
-
-
     .Explora{
       height: 100%;
       margin-left: 10px;
@@ -47,10 +70,25 @@
       color: gray;
       border-color: gray;
     }  
-
-
-
     /*-------------------------------------------------------*/
+
+    .Explora1{
+      height: 35px;
+      margin-left: 10px;
+      border-radius: 4px;
+      font-weight: 400;
+      font-size: 14px;
+      font-family: 'Montserrat';
+      color: rgb(52, 181, 224);
+      border-color: rgb(52, 181, 224);
+    }
+  
+  .Explora1:hover{
+      color: gray;
+      border-color: gray;
+    }  
+
+    /*--------------------------------------------------------*/
 
     .button99{
       color: rgb(52, 181, 224);

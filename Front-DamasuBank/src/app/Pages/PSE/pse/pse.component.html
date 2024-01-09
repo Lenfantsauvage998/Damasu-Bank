@@ -59,7 +59,7 @@
 
 <div class="d-flex justify-content-center align-items-center" style="margin-top: 15vh; padding-bottom: 5vh;"> 
     <button class="button99" style="border-radius: 4px;padding: 10px 15px 10px 15px; margin-right: 10vw; margin-left: 10vw;" routerLink="/Balance"><p style="font-family: 'Montserrat'; font-size: 14px; margin-bottom: 0px; font-weight: 400; border-radius: 6px;">Regresar a balance</p></button>
-    <button class="button99" style="border-radius: 4px;padding: 10px 15px 10px 15px; margin-left: 120px; margin-right: 10vw;" (click)="saveinfo()" *ngIf="sendButton" [disabled]="!PSEinput.valid" ><p style="font-family: 'Montserrat'; font-size: 14px; margin-bottom: 0px; font-weight: 400; border-radius: 6px;">Hacer consignacion</p></button>
+    <button class="button99" style="border-radius: 4px;padding: 10px 15px 10px 15px; margin-left: 120px; margin-right: 10vw;" (click)="show1()" *ngIf="sendButton" [disabled]="!PSEinput.valid" ><p style="font-family: 'Montserrat'; font-size: 14px; margin-bottom: 0px; font-weight: 400; border-radius: 6px;">Hacer consignacion</p></button>
     <div class="d-flex justify-content-center align-items-center" style="width: 172px; height: 44px; border: 2px solid black; border-radius: 4px; margin-left: 120px; margin-right: 10vw;" *ngIf="sendlookingButton">
         <img src="../../assets/ballsgif.gif" style="width: 172px;">
     </div>
@@ -80,5 +80,24 @@
 </div>
 
 <!------------------------------>
+<!------------------------------>
+
+<div *ngIf="showAlertVerification" class="d-flex justify-content-center align-items-center custom-alert1">
+    <div class="d-flex">
+        <div>
+            <p class="d-flex justify-content-center align-items-center" style="font-family: Montserrat; font-size: 14px; font-weight: 500;">Confirmar transaccion?</p>
+            <button class="Explora1 p-1" (click)="saveinfo()" (click)="closeAlert1()"> Enviar Dinero </button>
+        </div>
+        <a class="icons ms-3" (click)="closeAlert1()">
+            <svg xmlns="http://www.w3.org/2000/svg" width="38" height="38" fill="currentColor" class="bi bi-x" viewBox="0 0 16 16" >
+                <path d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708"/>
+            </svg>
+        </a>
+    </div>
+</div>
+
+
+<!------------------------------>
+
 
 

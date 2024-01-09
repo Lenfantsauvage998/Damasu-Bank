@@ -132,9 +132,6 @@
           <div class="m-2">
             <p style="font-family: Montserrat;">PSE</p>
          </div>
-
-       
-          
     </div>
     </div>
 </div>
@@ -154,10 +151,27 @@
 
 
 <!------------------------------>
+<!------------------------------>
+
+<div *ngIf="showAlertVerification" class="d-flex justify-content-center align-items-center custom-alert1">
+    <div class="d-flex">
+        <div>
+            <p class="d-flex justify-content-center align-items-center" style="font-family: Montserrat; font-size: 14px; font-weight: 500;">Confirmar transaccion?</p>
+            <button class="Explora p-1" (click)="saveinfo()" (click)="closeAlert1()"> Enviar Dinero </button>
+        </div>
+        <a class="icons ms-3" (click)="closeAlert1()">
+            <svg xmlns="http://www.w3.org/2000/svg" width="38" height="38" fill="currentColor" class="bi bi-x" viewBox="0 0 16 16" >
+                <path d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708"/>
+            </svg>
+        </a>
+    </div>
+</div>
+
+
+<!------------------------------>
 
 
 <div *ngIf="showLogin">
-    
     <div class="movements">
 
         <div class="d-flex justify-content-between align-items-center  ">
@@ -224,7 +238,7 @@
                 <input type="text" formControlName="id" placeholder="Cedula" class="inputMath" style="background-color: rgb(248, 238, 209)" required>
                 <input type="text" formControlName="amount" placeholder="Monto" class="inputMath" style="background-color: rgb(248, 238, 209)" required>
             </div>
-            <button class="Explora p-1" (click)="saveinfo()" *ngIf="sendButton" [disabled]="!transaccion.valid">Enviar dinero </button>
+            <button class="Explora p-1" *ngIf="sendButton" [disabled]="!transaccion.valid" (click)="show1()">Enviar dinero </button>
             <div class="d-flex justify-content-center align-items-center ms-3 " style="width: 104px; height: 34px; border: 2px solid black; border-radius: 4px;" *ngIf="sendlookingButton">
                 <img src="../../assets/ballsgif.gif" style="width: 104px;">
             </div>
@@ -283,7 +297,10 @@
                     </form>
             
                     <div class="d-flex justify-content-end align-items-center" style="height: 75px;">
-                        <button class="button1" (click)="preparingInfoCDT()" [disabled]="!formularioForRegisterCDT.valid" >¡Consigue tu CDT!</button>
+                        <button class="button1" (click)="preparingInfoCDT()" [disabled]="!formularioForRegisterCDT.valid" *ngIf="sendButtonCDT">¡Consigue tu CDT!</button>
+                            <div class="d-flex justify-content-center align-items-center ms-3 " style="width: 150px; height: 34px; border: 2px solid black; border-radius: 4px;" *ngIf="sendlookingButtonCDT">
+                                <img src="../../assets/ballsgif.gif" style="width: 150px;">
+                            </div>
                     </div>
             
                   </div>

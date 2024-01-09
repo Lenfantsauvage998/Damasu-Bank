@@ -96,9 +96,27 @@ export class BalanceComponent {
 
   /*-----------------------*/
 
+  showAlertVerification: boolean = false;
+
+  show1() {
+    this.showAlertVerification = true;
+  }
+
+  closeAlert1() {
+    this.showAlertVerification = false;
+  }
+
+  /*-----------------------*/
+
   sendButton = true;
 
   sendlookingButton = false;
+
+  /*------------------------*/
+
+  sendButtonCDT = true;
+
+  sendlookingButtonCDT = false;
 
   /*------------------------*/
 
@@ -195,7 +213,7 @@ export class BalanceComponent {
             ]
           ],
           BeginDate: ['', Validators.required],
-          acceptTerms: [false, Validators.requiredTrue]
+          PeriodMonths: ['', Validators.required] 
         }
       );
   }
@@ -370,6 +388,8 @@ export class BalanceComponent {
     const BeginDate = this.formularioForRegisterCDT.value.BeginDate
     const PeriodMonths = this.formularioForRegisterCDT.value.PeriodMonths
     const investedMoney = this.formularioForRegisterCDT.value.investedMoney
+    this.sendButtonCDT = false 
+    this.sendlookingButtonCDT = true
     this.showinformation2(name, id, BeginDate, PeriodMonths, investedMoney)
   }
 
@@ -379,6 +399,9 @@ export class BalanceComponent {
     this.registerService.registerUserCDT(name,id,BeginDate,PeriodMonths,investedMoney).subscribe({
       next: (data)=> {
         console.log(data)
+        this.sendButtonCDT = true 
+        this.sendlookingButtonCDT = false
+        this.show()
       } 
     })
   }

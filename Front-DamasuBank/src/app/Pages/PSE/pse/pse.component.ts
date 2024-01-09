@@ -33,6 +33,20 @@ export class PseComponent {
   
     /*-----------------------*/
 
+    /*-----------------------*/
+
+    showAlertVerification: boolean = false;
+
+    show1() {
+      this.showAlertVerification = true;
+    }
+
+    closeAlert1() {
+      this.showAlertVerification = false;
+    }
+
+  /*-----------------------*/
+
 
    /*-----------------------*/
 

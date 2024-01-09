@@ -185,6 +185,30 @@
   }
  
   /*----------------------------------------------------*/
+  /*-------------------------------------------*/
+
+  .custom-alert1 {
+    display: block;
+    position: fixed;
+    top: 100px; /* Ajusta este valor según tus preferencias */
+    right: 0%;
+    /* transform: translate(-50%, -50%); */
+    background-color: rgb(255, 237, 184);
+    color: black;
+    padding: 15px;
+    border-radius: 4px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
+  }
+  
+  .custom-alert button {
+    background-color: rgb(162, 130, 31);
+    color: black;
+    border: none;
+    padding: 5px 10px;
+    cursor: pointer;
+  }
+ 
+  /*----------------------------------------------------*/
 
 .accordion{
     font-family: 'Montserrat';
