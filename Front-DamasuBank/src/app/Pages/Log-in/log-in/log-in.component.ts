@@ -3,12 +3,13 @@ import { CommonModule } from '@angular/common';
 import { LogInService } from '../../../Services/Log-In/log-in.service';
 import { RegisterService } from '../../../Services/Register/register.service';
 import { FormControl, FormGroup, FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { Router } from '@angular/router';
+import { Router, RouterModule, RouterOutlet} from '@angular/router';
+
 
 @Component({
   selector: 'app-log-in',
   standalone: true,
-  imports: [CommonModule,FormsModule,ReactiveFormsModule],
+  imports: [CommonModule,FormsModule,ReactiveFormsModule, RouterOutlet, RouterModule],
   templateUrl: './log-in.component.html',
   styleUrl: './log-in.component.css'
 })

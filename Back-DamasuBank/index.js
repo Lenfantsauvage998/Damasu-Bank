@@ -7,6 +7,7 @@ import routerHistory from "./routes/history.js"
 import routerApi from "./routes/Api.js";
 import routerCDT from "./routes/CDT.js";
 import cors from 'cors'
+import routerCdt from './routes/cdt.route.js'
 
 dotenv.config();
 const app = express()

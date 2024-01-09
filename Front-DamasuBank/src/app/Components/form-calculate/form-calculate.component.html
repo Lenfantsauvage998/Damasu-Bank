@@ -1,0 +1,74 @@
+<app-nav-bar></app-nav-bar>
+<div class="container">
+  <div class="card p-5 mt-3">
+    <div class="row justify-content-between mt-3">
+      <div class="col-md-6">
+        <form
+          class="row g-3 needs-validation"
+          [formGroup]="calculateform"
+        >
+          <h1 class="mb-4">Calcula la rentabilidad de tu CDT Damasu</h1>
+
+          <div class="col-md-6">
+            <div class="card p-2 text-center">
+              <label for="amount">Monto</label>
+              <input
+                type="number"
+                id="amount"
+                class="form-control no-spinner"
+                formControlName="amount"
+              />
+              <div class="valid-feedback">Esta bien</div>
+            </div>
+          </div>
+
+          <div class="col-md-6">
+            <div class="card p-2 text-center">
+              <label for="time">Selecciona el plazo</label>
+              <select
+                class="form-select"
+                aria-label="Default select example"
+                formControlName="time"
+              >
+                <option selected value="null">Seleccionar</option>
+                <option value="180">180 días</option>
+                <option value="360">360 días</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="col-12 mt-3">
+            <div class="row justify-content-end">
+              <div class="col-md-4">
+                <button class="btn btn-warning mb-3" (click)="onCalculate()" [disabled]="!calculateform.valid">Calcular Rentabilidad</button>
+              </div>
+            </div>
+          </div>
+        </form>
+      </div>
+
+      <div class="col-md-6">
+        <div class="row justify-content-center mt-md-5">
+          <div class="card p-2 text-center">
+            <label for="cost">Rentabilidad</label>
+            <input
+              type="number"
+              id="cost"
+              class="form-control"
+              [formControl]="costView"
+            />
+            <div class="valid-feedback">Esta bien</div>
+            <div class="col-12 mt-3">
+              <div class="row justify-content-end">
+                <div class="col-md-2">
+                  <button class="btn btn-success mb-3" (click)="onSubmit()">Enviar</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<app-footer></app-footer>
