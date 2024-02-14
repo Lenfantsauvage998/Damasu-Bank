@@ -1,8 +1,10 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { TransactionsService } from '../../../Services/Transactions/transactions.service';
 import { FormControl, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
 import { RouterOutlet, RouterModule } from '@angular/router';
+import { Store, select } from "@ngrx/store";
+import { AppState } from '../../../app.state';
 
 @Component({
   selector: 'app-pse',
@@ -11,7 +13,7 @@ import { RouterOutlet, RouterModule } from '@angular/router';
   templateUrl: './pse.component.html',
   styleUrl: './pse.component.css'
 })
-export class PseComponent {
+export class PseComponent implements OnInit {
 
   /*------------------------*/
 
@@ -56,13 +58,28 @@ export class PseComponent {
  
    /*------------------------*/  
 
-  constructor(private transactionsService:TransactionsService){
+   BTC : any = []
+
+   ETH : any = []
+
+  constructor(private transactionsService:TransactionsService , private store: Store<AppState>){
 
     this.PSEinput = new FormGroup({
       id : new FormControl("",[Validators.required,Validators.minLength(1)]),
       request : new FormControl("",[Validators.required,Validators.minLength(1)]),
     })
 
+  }
+
+  ngOnInit(){
+    this.store.pipe(select("bitcoin")).subscribe((value: number) => {
+      console.log(value)
+      this.BTC = value
+    }),
+    this.store.pipe(select("etherium")).subscribe((value: number) => {
+      console.log(value)
+      this.ETH = value
+    })
   }
 
   saveinfo(){

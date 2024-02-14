@@ -19,7 +19,7 @@ export class LogInService {
   })
 
   obtenerPersonajes() : Observable<any> {
-    return this.httpClientMine.get<any>("http://localhost:8080/users")
+    return this.httpClientMine.get<any>("http://3.140.1.8:8080/users")
   }
 
 
@@ -27,28 +27,28 @@ export class LogInService {
     let headers = this.headers;
     const token:string = localStorage.getItem("Beaver") as string
     headers = headers.append("Authorization", token)
-    return this.httpClientMine.get<any>("http://localhost:8080/users/account", { headers })
+    return this.httpClientMine.get<any>("http://3.140.1.8:8080/users/account", { headers })
   }
 
   getinfoDataBase():Observable<any>{
     let headers = this.headers;
     const token:string = localStorage.getItem("Beaver") as string
     headers = headers.append("Authorization", token)
-    return this.httpClientMine.get<any>("http://localhost:8080/balance/account", { headers })
+    return this.httpClientMine.get<any>("http://3.140.1.8:8080/balance/account", { headers })
   }
 
   getinfoRecords():Observable<any>{
     let headers = this.headers;
     const token:string = localStorage.getItem("Beaver") as string
     headers = headers.append("Authorization", token)
-    return this.httpClientMine.get<any>("http://localhost:8080/records/account", { headers })
+    return this.httpClientMine.get<any>("http://3.140.1.8:8080/records/account", { headers })
   }
 
   getinfoCDT():Observable<any>{
     let headers = this.headers;
     const token:string = localStorage.getItem("Beaver") as string
     headers = headers.append("Authorization", token)
-    return this.httpClientMine.get<any>("http://localhost:8080/cdt/account", { headers })
+    return this.httpClientMine.get<any>("http://3.140.1.8:8080/cdt/account", { headers })
   }
 
   savetoken(token:any){
@@ -56,7 +56,7 @@ export class LogInService {
   }
 
   login(email : string, password:string): Observable<any>{
-    return this.httpClientMine.post<any>("http://localhost:8080/users/login", {email : email, password : password})
+    return this.httpClientMine.post<any>("http://3.140.1.8:8080/users/login", {email : email, password : password})
   }
 
 }

@@ -185,7 +185,7 @@
   }
  
   /*----------------------------------------------------*/
-  /*-------------------------------------------*/
+  /*--------------------------------------------------- */
 
   .custom-alert1 {
     display: block;
@@ -209,6 +209,45 @@
   }
  
   /*----------------------------------------------------*/
+  /*--------------------------------------------------- */
+
+  .custom-alert2 {
+    display: block;
+    position: fixed;
+    top: 500px; /* Ajusta este valor según tus preferencias */
+    right: 0%;
+    /* transform: translate(-50%, -50%); */
+    background-color: rgb(255, 237, 184);
+    color: black;
+    padding: 15px;
+    border-radius: 4px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
+  }
+  
+  .custom-alert2:hover{
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.6);
+  }
+  /*----------------------------------------------------*/
+  /*--------------------------------------------------- */
+
+  .custom-alert3 {
+    display: block;
+    position: fixed;
+    bottom: 0px; /* Ajusta este valor según tus preferencias */
+    right: 0%;
+    background-color: rgb(255, 237, 184);
+    color: black;
+    padding: 15px;
+    border-radius: 4px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
+    z-index: 1;
+  }
+  
+  .custom-alert3:hover{
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.6);
+  }
+  /*----------------------------------------------------*/
+
 
 .accordion{
     font-family: 'Montserrat';

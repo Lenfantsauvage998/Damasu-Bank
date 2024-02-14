@@ -4,12 +4,18 @@ import { FormControl, FormGroup, FormsModule, FormBuilder, ReactiveFormsModule, 
 import { TransactionsService } from '../../../Services/Transactions/transactions.service';
 import { LogInService } from '../../../Services/Log-In/log-in.service';
 import { ApiService } from '../../../Services/API/api.service';
+import { ApiStockService } from '../../../Services/API-STOCKS/api-stocks.service';
 import { TransCardComponent } from '../../../Components/Transactional-Card/trans-card/trans-card.component';
 import { Router, RouterOutlet , RouterModule } from '@angular/router';
 import { RegisterService } from '../../../Services/Register/register.service';
 import { PseComponent } from '../../PSE/pse/pse.component';
+import { Store, select } from "@ngrx/store";
+import { AppState } from '../../../app.state';
+import { setBitcoin } from '../../../Store/Bitcoin/bitcoin.actions';
+import { setEtherium } from '../../../Store/Etherium/etherium.actions';
 import { subscribe } from 'node:diagnostics_channel';
 import { validateHeaderValue } from 'node:http';
+import { addTransaction } from '../../../Store/Transaction.actions';
 
 @Component({
   selector: 'app-balance',
@@ -29,10 +35,13 @@ export class BalanceComponent {
   showLogin = true;
   showTransactions = false;
   showRegister = false;
+
   /*------------------------*/
+
   showPanelCDT = false; 
   showRegisterCDT = false;
   
+
 
   loginForm() {
     this.showLogin = true;
@@ -108,6 +117,38 @@ export class BalanceComponent {
 
   /*-----------------------*/
 
+  /*-----------------------*/
+
+  showinput : boolean = true
+
+  showCalendar: boolean = false;
+
+  showcalendar() {
+    this.showCalendar = true;
+    this.showinput = false;
+  }
+
+  closecalendar() {
+    this.showCalendar = false;
+    this.showinput = true;
+  }
+
+  showCronogram: boolean = true;
+
+  showCronogramMaker: boolean = false;
+
+  showcronogramMaker() {
+    this.showCronogram = false;
+    this.showCronogramMaker = true;
+  } 
+  
+  closecronogramMaker() {
+    this.showCronogram = true;
+    this.showCronogramMaker = false;
+  }  
+  
+  /*-----------------------*/
+
   sendButton = true;
 
   sendlookingButton = false;
@@ -124,7 +165,13 @@ export class BalanceComponent {
 
   /*-------------------------*/
 
-  constructor(private Login:LogInService, private transactionsService : TransactionsService , private apiService:ApiService, private registerService:RegisterService , private formBuilder: FormBuilder){
+  formularioScheduled : any 
+
+  /*-------------------------*/
+
+  constructor(private Login:LogInService, private transactionsService : TransactionsService , private apiService:ApiService, 
+    private registerService:RegisterService , private formBuilder: FormBuilder , private apistockservice:ApiStockService,
+    private store:Store<AppState> ){
 
     this.chatGptRequest = new FormGroup({
       message : new FormControl(""),
@@ -142,6 +189,13 @@ export class BalanceComponent {
       BeginDate : new FormControl(""),
       PeriodMonths : new FormControl(""),
     })
+
+    this.formularioScheduled = new FormGroup({
+      id : new FormControl(""),
+      date : new FormControl(""),
+      hour : new FormControl(""),
+      amount : new FormControl(""),
+    })
   }
 
   
@@ -155,9 +209,13 @@ export class BalanceComponent {
 
   exactMoney : any = []
 
+  Bitcoin = []
+
+  ETH = []
+
   /*-----------------------------*/
   
-  pagDefault : number = 5
+  pagDefault : number = 5  
 
   /*-----------------------------*/
 
@@ -170,9 +228,11 @@ export class BalanceComponent {
       this.Login.getinfoDataBase().subscribe({
         next: (info)=> {
           this.info = info
+          console.log(info[0].patrimony)
           // const data = info[0].patrimony
           // console.log(data)
           // this.exactMoney = data
+          
         } 
       }
       )
@@ -181,13 +241,13 @@ export class BalanceComponent {
           const info = data
           const infoReformed = info.slice(0,(this.pagDefault))
           this.records = infoReformed
-          console.log(info)
+          // console.log(info)
         } 
       }
       )
       this.Login.getinfoCDT().subscribe({
         next: (data)=> {
-          console.log(data)
+          // console.log(data)
           this.CDTinfo = data
           const invest = data[0].investedMoney
           this.exactMoney = invest
@@ -216,6 +276,25 @@ export class BalanceComponent {
           PeriodMonths: ['', Validators.required] 
         }
       );
+      
+      this.apistockservice.sendMessageToSTOCKAPI().subscribe({
+        next: (data)=> {
+          const info = data
+          console.log(info.results[0].c)
+          this.Bitcoin = info.results[0].c
+          this.store.dispatch(setBitcoin({value : info.results[0].c}))
+        }
+      })
+
+      this.apistockservice.sendMessageToSTOCKAPIETH().subscribe({
+        next: (data)=> {
+          const info = data
+          console.log(info.results[0].c)
+          this.ETH = info.results[0].c
+          this.store.dispatch(setEtherium({value: info.results[0].c}))
+        }
+      })
+
   }
 
   checkResponse() {
@@ -405,49 +484,20 @@ export class BalanceComponent {
       } 
     })
   }
+
+
+  /*------------------------------------------------------------*/
+
+  preparingInfoScheduled(){
+    const id = this.formularioScheduled.value.id
+    const date = this.formularioScheduled.value.date
+    const hour = this.formularioScheduled.value.hour
+    const amount = this.formularioScheduled.value.amount
+    console.log(id,date,hour,amount)
+  }
   
-  /*------------------------------------------------------------
+  /*-------------------------------------------------------------*/
 
-  formularioUsers: any
-
-
-  constructor(private register:RegisterService ,private router:Router){
-
-    this.formularioUsers = new FormGroup({
-      name : new FormControl(),
-      age : new FormControl(),
-      id : new FormControl(),
-      phoneNumber : new FormControl(),
-      address : new FormControl(),
-      email : new FormControl(),
-      password : new FormControl(),
-    })
 
   }
 
-
-
-  newuserbox : any = [] 
-  
-  saveuser(){
-    const name = this.formularioUsers.value.name
-    const age = this.formularioUsers.value.age
-    const id = this.formularioUsers.value.id
-    const phoneNumber = this.formularioUsers.value.phoneNumber
-    const address = this.formularioUsers.value.address
-    const email = this.formularioUsers.value.email
-    const password = this.formularioUsers.value.password
-    this.newUser(name,age, id, phoneNumber, address, email, password )
-  }
-
-  newUser(name:string , age:number, id:number, phoneNumber:string, address:string, email:string, password:string) {
-    this.register.registerUser(name, age , id, phoneNumber, address, email, password ).subscribe({
-      next: (token)=>{
-        console.log(token[0])
-        this.register.savetoken(token[0])
-        this.router.navigate(["/Savings"])
-      }
-    })
-  }
-  ------------*/
-}

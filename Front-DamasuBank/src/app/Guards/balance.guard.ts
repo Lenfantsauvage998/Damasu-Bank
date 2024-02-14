@@ -13,7 +13,24 @@ export const balanceguard = () => {
       return false;
     }
   } else {
-    // console.log("I'm in the server side")
+    console.log("I'm in the server side")
     return false
   }
 };
+
+// export const ngrx = () => {
+
+//   if (typeof window !== 'undefined') {
+    
+//     // const navigation = new Router();
+
+//     if (localStorage.getItem("ScheduledTransaction")) {
+//       return true;
+//     } else {
+//       return false;
+//     }
+//   } else {
+//     console.log("I'm in the server side")
+//     return false
+//   }
+// };

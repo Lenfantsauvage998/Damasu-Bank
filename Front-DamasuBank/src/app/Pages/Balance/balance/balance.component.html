@@ -9,22 +9,44 @@
         </a>
       </div>
       <div>
-        <div>
             <img src="./assets/damasuxdxdpng.png" style="width: 130px;">
-        </div>
       </div>
-      <div class="humanlogo">
-        <div class="d-flex justify-content-center">
-        <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" fill="currentColor" class="bi bi-person-circle" viewBox="0 0 16 16">
-            <path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0"/>
-            <path fill-rule="evenodd" d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8m8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1"/>
-          </svg>
+      <div class="d-flex">
+        <div class="d-flex justify-content-center align-items-center" style="margin-right: 5vw;margin-left: 10vw;">
+            <div>
+                <div class="d-flex justify-content-center pb-1" >
+                    <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" fill="currentColor" class="bi bi-currency-bitcoin" viewBox="0 0 16 16">
+                        <path d="M5.5 13v1.25c0 .138.112.25.25.25h1a.25.25 0 0 0 .25-.25V13h.5v1.25c0 .138.112.25.25.25h1a.25.25 0 0 0 .25-.25V13h.084c1.992 0 3.416-1.033 3.416-2.82 0-1.502-1.007-2.323-2.186-2.44v-.088c.97-.242 1.683-.974 1.683-2.19C11.997 3.93 10.847 3 9.092 3H9V1.75a.25.25 0 0 0-.25-.25h-1a.25.25 0 0 0-.25.25V3h-.573V1.75a.25.25 0 0 0-.25-.25H5.75a.25.25 0 0 0-.25.25V3l-1.998.011a.25.25 0 0 0-.25.25v.989c0 .137.11.25.248.25l.755-.005a.75.75 0 0 1 .745.75v5.505a.75.75 0 0 1-.75.75l-.748.011a.25.25 0 0 0-.25.25v1c0 .138.112.25.25.25zm1.427-8.513h1.719c.906 0 1.438.498 1.438 1.312 0 .871-.575 1.362-1.877 1.362h-1.28zm0 4.051h1.84c1.137 0 1.756.58 1.756 1.524 0 .953-.626 1.45-2.158 1.45H6.927z"/>
+                    </svg>
+                </div>
+                <div class="d-flex justify-content-center">
+                    <p style="font-family: 'Montserrat'; font-size: 12px; margin-bottom: 0px;" > {{Bitcoin}} $ USD </p>
+                </div>  
+            </div>
         </div>
-          <div class="d-flex justify-content-center">
-            @for(i of users; track i._id){
-                <p style="font-family: 'Montserrat'; font-size: 12px; margin-bottom: 0px;" >{{i.name}}</p>
-            }
-          </div>
+        <div class="d-flex justify-content-center align-items-center" style="margin-right: 5vw">
+            <div>
+                <div class="d-flex justify-content-center pb-1">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512" width="22" height="22"><path d="M311.9 260.8L160 353.6 8 260.8 160 0l151.9 260.8zM160 383.4L8 290.6 160 512l152-221.4-152 92.8z"/></svg>
+                </div>
+                <div class="d-flex justify-content-center">
+                    <p style="font-family: 'Montserrat'; font-size: 12px; margin-bottom: 0px;" > {{ETH}} $ USD </p>
+                </div> 
+            </div>
+        </div>
+        <div class="humanlogo">
+            <div class="d-flex justify-content-center pb-1">
+            <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" fill="currentColor" class="bi bi-person-circle" viewBox="0 0 16 16">
+                <path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0"/>
+                <path fill-rule="evenodd" d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8m8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1"/>
+            </svg>
+            </div>
+            <div class="d-flex justify-content-center">
+                @for(i of users; track i._id){
+                    <p style="font-family: 'Montserrat'; font-size: 12px; margin-bottom: 0px;" >{{i.name}}</p>
+                }
+            </div>
+        </div>
       </div>
     </div>
 </nav>
@@ -151,7 +173,6 @@
 
 
 <!------------------------------>
-<!------------------------------>
 
 <div *ngIf="showAlertVerification" class="d-flex justify-content-center align-items-center custom-alert1">
     <div class="d-flex">
@@ -169,6 +190,75 @@
 
 
 <!------------------------------>
+
+<!------------------------------>
+
+<div *ngIf="showinput" class="d-flex justify-content-center align-items-center custom-alert2" (click)="showcalendar()">
+    <div class="d-flex">
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-calendar-event" viewBox="0 0 16 16">
+            <path d="M11 6.5a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-1a.5.5 0 0 1-.5-.5z"/>
+            <path d="M3.5 0a.5.5 0 0 1 .5.5V1h8V.5a.5.5 0 0 1 1 0V1h1a2 2 0 0 1 2 2v11a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V3a2 2 0 0 1 2-2h1V.5a.5.5 0 0 1 .5-.5M1 4v10a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V4z"/>
+          </svg>
+    </div>
+</div>
+
+
+<!------------------------------>
+<!------------------------------>
+<form [formGroup]="formularioScheduled">
+<div *ngIf="showCalendar" class="d-flex flex-column justify-content-center align-items-center custom-alert3" >
+    <div>
+        <div >
+            <p class="d-flex justify-content-center align-items-center" style="font-family: Montserrat; font-size: 14px; font-weight: 500;">
+                Consignaciones programadas
+            </p>
+        </div>
+        <div *ngIf="showCronogram" class="d-flex justify-content-center align-items-center" style="border: 1px solid rgb(214, 195, 136); height: 250px; border-radius: 4px;" (click)="showcronogramMaker()">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-plus-lg" viewBox="0 0 16 16">
+                <path fill-rule="evenodd" d="M8 2a.5.5 0 0 1 .5.5v5h5a.5.5 0 0 1 0 1h-5v5a.5.5 0 0 1-1 0v-5h-5a.5.5 0 0 1 0-1h5v-5A.5.5 0 0 1 8 2"/>
+              </svg>
+        </div>
+        <div *ngIf="showCronogramMaker" class="d-flex  flex-column justify-content-baseline align-items-center p-2" style="border: 1px solid rgb(214, 195, 136); height: 350px; border-radius: 4px;">
+            <div >
+                <p class="d-flex justify-content-center align-items-center" style="font-family: Montserrat; font-size: 12px; font-weight: 500;">
+                Fecha Exacta 
+                </p>
+                <input type="text" formControlName="date" placeholder="Dia/Mes/Año" style="background-color: rgb(248, 238, 209); border-radius: 5px; height: 20px; width: 100%; border: none;">
+            </div>
+            <div class="mt-2">
+                <p class="d-flex justify-content-center align-items-center" style="font-family: Montserrat; font-size: 12px; font-weight: 500;">
+                Hora Exacta 
+                </p>
+                <input type="text" formControlName="hour" placeholder="Hora/Minuto" style="background-color: rgb(248, 238, 209); border-radius: 5px; height: 20px; width: 100%; border: none;">
+            </div>
+            <div class="mt-2">
+                <p class="d-flex justify-content-center align-items-center" style="font-family: Montserrat; font-size: 12px; font-weight: 500;">
+                Cedula/Id
+                </p>
+                <input type="text" formControlName="id" placeholder="Cedula/Id" style="background-color: rgb(248, 238, 209); border-radius: 5px; height: 20px; width: 100%; border: none;">
+            </div>
+            <div class="mt-2">
+                <p class="d-flex justify-content-center align-items-center" style="font-family: Montserrat; font-size: 12px; font-weight: 500;">
+                Monto
+                </p>
+                <input type="text" formControlName="amount" placeholder="Monto USD$$" style="background-color: rgb(248, 238, 209); border-radius: 5px; height: 20px; width: 100%; border: none;">
+            </div>
+            <div class="d-flex justify-content-center align-items-center mt-4">
+                <button class="Explora p-1" (click)="preparingInfoScheduled()"> Programar Transacción </button>
+            </div>
+        </div>
+    </div>
+    <div class="mt-2" style="width: 100%;" (click)="closecronogramMaker()" (click)="closecalendar()">
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-x-octagon" viewBox="0 0 16 16">
+            <path d="M4.54.146A.5.5 0 0 1 4.893 0h6.214a.5.5 0 0 1 .353.146l4.394 4.394a.5.5 0 0 1 .146.353v6.214a.5.5 0 0 1-.146.353l-4.394 4.394a.5.5 0 0 1-.353.146H4.893a.5.5 0 0 1-.353-.146L.146 11.46A.5.5 0 0 1 0 11.107V4.893a.5.5 0 0 1 .146-.353zM5.1 1 1 5.1v5.8L5.1 15h5.8l4.1-4.1V5.1L10.9 1z"/>
+            <path d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708"/>
+          </svg>
+    </div>
+</div>
+</form>
+
+<!------------------------------>
+
 
 
 <div *ngIf="showLogin">
