@@ -13,9 +13,9 @@ import { BsModalRef, BsModalService } from 'ngx-bootstrap/modal';
 })
 export class ModalCdtComponent {
   modalRef?: BsModalRef;
-  constructor(private modalService: BsModalService) {}
+  // constructor(private modalService: BsModalService) {}
  
-  public openModal(template: TemplateRef<void>) {
-    this.modalRef = this.modalService.show(template);
-  }
+  // public openModal(template: TemplateRef<void>) {
+  //   this.modalRef = this.modalService.show(template);
+  // }
 }

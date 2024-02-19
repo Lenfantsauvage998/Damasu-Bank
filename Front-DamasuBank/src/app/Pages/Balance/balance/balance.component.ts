@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormControl, FormGroup, FormsModule, FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
+import { io } from "socket.io-client";
 import { TransactionsService } from '../../../Services/Transactions/transactions.service';
 import { LogInService } from '../../../Services/Log-In/log-in.service';
 import { ApiService } from '../../../Services/API/api.service';
@@ -13,9 +14,11 @@ import { Store, select } from "@ngrx/store";
 import { AppState } from '../../../app.state';
 import { setBitcoin } from '../../../Store/Bitcoin/bitcoin.actions';
 import { setEtherium } from '../../../Store/Etherium/etherium.actions';
-import { subscribe } from 'node:diagnostics_channel';
-import { validateHeaderValue } from 'node:http';
-import { addTransaction } from '../../../Store/Transaction.actions';
+import { setBalance } from '../../../Store/Balance/balance.actions';
+import { setRecords } from '../../../Store/Records/records.actions';
+// import { SocketService } from '../../../Services/Web-Socket/websocket.service';
+import { WebTokens2Service } from '../../../Services/Web-Tokens2/web-tokens2.service';
+import { SocketIoModule, SocketIoConfig } from 'ngx-socket-io';
 
 @Component({
   selector: 'app-balance',
@@ -171,7 +174,7 @@ export class BalanceComponent {
 
   constructor(private Login:LogInService, private transactionsService : TransactionsService , private apiService:ApiService, 
     private registerService:RegisterService , private formBuilder: FormBuilder , private apistockservice:ApiStockService,
-    private store:Store<AppState> ){
+    private store:Store<AppState>, private WebTokens2Service:WebTokens2Service){
 
     this.chatGptRequest = new FormGroup({
       message : new FormControl(""),
@@ -203,6 +206,8 @@ export class BalanceComponent {
 
   info : any = [] 
 
+  infox : any = [] 
+
   records : any = []
 
   CDTinfo : any = []
@@ -212,6 +217,8 @@ export class BalanceComponent {
   Bitcoin = []
 
   ETH = []
+
+  WS : any = []
 
   /*-----------------------------*/
   
@@ -223,16 +230,16 @@ export class BalanceComponent {
         this.Login.getinfo().subscribe({
         next: (user)=>{
           this.users = user
+          // this.WebTokens2Service.connect(user[0].id)
         }
       }),
       this.Login.getinfoDataBase().subscribe({
         next: (info)=> {
           this.info = info
-          console.log(info[0].patrimony)
+          // console.log(info[0].patrimony)
           // const data = info[0].patrimony
           // console.log(data)
           // this.exactMoney = data
-          
         } 
       }
       )
@@ -241,7 +248,6 @@ export class BalanceComponent {
           const info = data
           const infoReformed = info.slice(0,(this.pagDefault))
           this.records = infoReformed
-          // console.log(info)
         } 
       }
       )
@@ -280,7 +286,6 @@ export class BalanceComponent {
       this.apistockservice.sendMessageToSTOCKAPI().subscribe({
         next: (data)=> {
           const info = data
-          console.log(info.results[0].c)
           this.Bitcoin = info.results[0].c
           this.store.dispatch(setBitcoin({value : info.results[0].c}))
         }
@@ -289,12 +294,16 @@ export class BalanceComponent {
       this.apistockservice.sendMessageToSTOCKAPIETH().subscribe({
         next: (data)=> {
           const info = data
-          console.log(info.results[0].c)
           this.ETH = info.results[0].c
           this.store.dispatch(setEtherium({value: info.results[0].c}))
         }
       })
 
+      this.store.pipe(select("balance")).subscribe((data: number) => {
+        this.infox = data
+      })
+
+      
   }
 
   checkResponse() {
@@ -334,6 +343,21 @@ export class BalanceComponent {
         this.sendButton = true;
         this.sendlookingButton = false;
         this.show()
+        this.store.dispatch(setBalance({value : amount}))
+        this.Login.getinfoRecords().subscribe({
+          next: (data)=> {
+            this.records = []
+            const info = data
+            console.log(info)
+            const infoReformed = info.slice(0,(this.pagDefault))
+            this.store.dispatch(setRecords({value : infoReformed}))
+            this.store.pipe(select("records")).subscribe((value: any) => {
+              console.log(value)
+              this.records = value
+            })
+          } 
+        }
+        )
       },
       error(err) {
           console.error(err)

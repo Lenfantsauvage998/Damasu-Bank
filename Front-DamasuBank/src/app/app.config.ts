@@ -9,7 +9,15 @@ import { provideStore, provideState } from '@ngrx/store';
 import { reducers, metaReducers } from './reducers';
 import { bitcoinReducer } from './Store/Bitcoin/bitcoin.reducers';
 import { etheriumReducer } from './Store/Etherium/etherium.reducers';
+import { balanceReducer } from './Store/Balance/balance.reducers';
+import { recordReducer } from './Store/Records/records.reducers';
 import { StoreModule } from "@ngrx/store";
+import { SocketIoModule, SocketIoConfig } from 'ngx-socket-io';
+// import { SocketService } from './Services/Web-Socket/websocket.service';
+// import { WrappedSocket } from 'ngx-socket-io/src/socket-io.service';
+// import { WebsocketService } from './Services/Web-Socket/websocket.service';
+
+const config: SocketIoConfig = { url: 'http://localhost:8080/ws', options: {} };
 
 export const appConfig: ApplicationConfig = {
   providers: [
@@ -17,9 +25,12 @@ export const appConfig: ApplicationConfig = {
     provideClientHydration(),
     provideHttpClient(withFetch()), 
     CdtService, 
-    BsModalService, 
+    BsModalService,
+    // SocketService,
     provideStore(), 
     provideState({ name: 'bitcoin' , reducer: bitcoinReducer }),
-    provideState({ name: 'etherium' , reducer: etheriumReducer })
+    provideState({ name: 'etherium' , reducer: etheriumReducer }),
+    provideState({ name: 'balance' , reducer: balanceReducer }),
+    provideState({ name: 'records' , reducer: recordReducer }),
   ]
 };

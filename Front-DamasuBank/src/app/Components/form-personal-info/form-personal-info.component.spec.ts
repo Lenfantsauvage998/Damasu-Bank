@@ -1,6 +1,8 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { FormPersonalInfoComponent } from './form-personal-info.component';
+import { HttpClientTestingModule } from '@angular/common/http/testing';
+import { RouterTestingModule } from '@angular/router/testing';
 
 describe('FormPersonalInfoComponent', () => {
   let component: FormPersonalInfoComponent;
@@ -8,7 +10,7 @@ describe('FormPersonalInfoComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [FormPersonalInfoComponent]
+      imports: [FormPersonalInfoComponent, HttpClientTestingModule,RouterTestingModule ]
     })
     .compileComponents();
     

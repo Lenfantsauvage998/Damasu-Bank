@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
-
+import { environment } from '../../../environments/environment.development';
 @Injectable({
   providedIn: 'root'
 })
@@ -17,14 +17,14 @@ export class TransactionsService {
     let headers = this.headers;
     const token:string = localStorage.getItem("Beaver") as string
     headers = headers.append("Authorization", token)
-    return this.http.put<any>("http://3.140.1.8:8080/balance", {id : id, request: amount }, {headers})
+    return this.http.put<any>("http://"+ environment.IP_PUBLIC +":8080/balance", {id : id, request: amount }, {headers})
   }
 
   sendMoneyPSE(id : number, amount: number): Observable<any>{
     let headers = this.headers;
     const token:string = localStorage.getItem("Beaver") as string
     headers = headers.append("Authorization", token)
-    return this.http.put<any>("http://3.140.1.8:8080/cdt/PSE", {id : id, request: amount }, {headers})
+    return this.http.put<any>("http://"+ environment.IP_PUBLIC +":8080/cdt/PSE", {id : id, request: amount }, {headers})
   }
 
 }

@@ -58,12 +58,12 @@
         <div class="d-flex align-items-start money" style="font-size: 34px;"><p class="d-flex align-items-start">$</p></div>
         <div class="d-flex align-items-start money"> <p class="d-flex align-items-start">
             @for(i of info; track i._id){
-                <p style="font-size: 120px; ">{{i.patrimony + exactMoney}}</p>
+                <p style="font-size: 120px; ">{{(i.patrimony + exactMoney) - infox }}</p>
             }
         </p></div>
     </div>
     <div class="d-flex justify-content-center align-items-center ">
-        <p class="textnavbar">Valor total de la cuenta incluyendo inversiones</p>
+        <p class="textnavbar">Valor total de la cuenta incluyendo inversiones {{WS}}</p>
     </div>
     <div class="d-flex justify-content-center align-items-center line" style="border: solid 0.5px rgb(214, 195, 136);">
 
@@ -74,7 +74,7 @@
             <div class="d-flex align-items-start money" ><p class="d-flex align-items-start">
                 <p class="d-flex align-items-start" style="font-size: 48px;" > 
                     @for(i of info; track i._id){
-                    {{i.patrimony }}
+                    {{ i.patrimony - infox}}
                     }
                 </p> 
             </div>

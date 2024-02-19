@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { RouterOutlet } from '@angular/router';
 import { NavBarComponent } from './Components/NavBar/nav-bar/nav-bar.component';
 import { FooterComponent } from './Components/Footer/footer/footer.component';
+import { SocketIoModule, SocketIoConfig } from 'ngx-socket-io';
 
 @Component({
   selector: 'app-root',

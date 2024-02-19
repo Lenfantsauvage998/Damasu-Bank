@@ -1,6 +1,9 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { BalanceComponent } from './balance.component';
+import { HttpClientTestingModule } from '@angular/common/http/testing';
+import { provideMockStore } from '@ngrx/store/testing';
+import { RouterTestingModule } from '@angular/router/testing'
 
 describe('BalanceComponent', () => {
   let component: BalanceComponent;
@@ -8,7 +11,10 @@ describe('BalanceComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [BalanceComponent]
+      imports: [BalanceComponent, HttpClientTestingModule,RouterTestingModule],
+      providers: [
+        provideMockStore({}),
+      ]
     })
     .compileComponents();
     

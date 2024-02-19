@@ -3,6 +3,7 @@ import { UserInfo } from '../models/personalInfo.model';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 import { Cdt } from '../models/cdt.model';
+import { environment } from '../../environments/environment.development';
 
 @Injectable({
   providedIn: 'root',
@@ -15,7 +16,7 @@ export class CdtService {
   }
   addCdtInfo(cdt:Cdt): Observable<Cdt> {
     return this.http.post<Cdt>(
-      'http://3.140.1.8:8080/cdtx/createCdt',
+      "http://"+ environment.IP_PUBLIC +":8080/cdtx/createCdt",
       cdt
     );
   }

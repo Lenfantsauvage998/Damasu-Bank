@@ -64,7 +64,7 @@ export class LogInComponent {
   verifyUser(email:string, password:string) {
     this.login.login(email, password ).subscribe({
       next: (token)=>{
-        console.log(token[0])
+        // console.log(token[0])
         this.login.savetoken(token[0])
         this.router.navigate(["/Balance"])
       }
