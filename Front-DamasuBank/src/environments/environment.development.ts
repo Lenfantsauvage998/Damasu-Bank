@@ -1,3 +1,3 @@
 export const environment = {
-    IP_PUBLIC : "localhost"
+    IP_PUBLIC : "3.140.1.8"
 };
